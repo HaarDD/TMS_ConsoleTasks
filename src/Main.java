@@ -6,7 +6,7 @@ import lecture1.*;
 
 
 public class Main {
-
+    //Выполнил Максим Галицкий
     public static void main(String[] args) {
         PrintUtil ptUl = new PrintUtil();
         TasksSwitcher tasksSwitcher = new TasksSwitcher();
