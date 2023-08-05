@@ -14,8 +14,8 @@ public class L1Task6 extends TaskBase {
         super(printUtil,6,"Подмена содержимого переменных типа int");    }
     @Override
     public void runTask() {
-        int a = (int) printUtil.getNumber("Число a: ",false),
-                b = (int)printUtil.getNumber("Число b ",false);
+        int a = (int) printUtil.getNumber("Число a: "),
+                b = (int)printUtil.getNumber("Число b ");
         printUtil.print("До подмены: a = " + a + " b = "+b);
         int temp = a;
         a = b;

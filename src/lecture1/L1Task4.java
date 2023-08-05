@@ -12,7 +12,7 @@ public class L1Task4 extends TaskBase {
     @Override
     public void runTask() {
         printUtil.printOption(this);
-        double fractionalNumber = printUtil.getNumber("Исходное число: ",false);
+        double fractionalNumber = printUtil.getNumber("Исходное число: ");
         printUtil.print("Округленное число: "+ Math.round(fractionalNumber));
     }
 }

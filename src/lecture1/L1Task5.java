@@ -14,8 +14,8 @@ public class L1Task5 extends TaskBase {
 
     @Override
     public void runTask() {
-        int q = (int) printUtil.getNumber("Введите натуральное число q: ", true),
-                w = (int) printUtil.getNumber("Введите натуральное число w: ", true);
+        int q = (int) printUtil.getNaturalNumber("Введите натуральное число q: "),
+                w = (int) printUtil.getNaturalNumber("Введите натуральное число w: ");
         printUtil.print("Деление с остатком: " + q + " / " + w + " = " + (q / w) + " и " + (q % w) + " в остатке");
     }
 }

@@ -12,12 +12,12 @@ import base.PrintUtil;
 public class L1Task2and3 extends TaskBase {
 
     public L1Task2and3(PrintUtil printUtil){
-        super(printUtil,2,"(2-3) Сумма цифр числа");
+        super(printUtil,3,"(2-3) Сумма цифр числа");
     }
     @Override
     public void runTask() {
         printUtil.printOption(this);
-        int n = (int)printUtil.getNumber("Исходное число: ",false);
+        int n = (int)printUtil.getNumber("Исходное число: ");
         int sum = String.valueOf(n).chars().filter(Character::isDigit).map(Character::getNumericValue).sum();
         printUtil.print("Сумма цифр числа \"" + n + "\": " + sum);
     }

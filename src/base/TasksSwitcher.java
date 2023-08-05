@@ -22,7 +22,7 @@ public class TasksSwitcher {
     public void runMenu(MenuOption[] options){
         boolean isTasks = options instanceof TaskBase[];
         printMenuList(options);
-        int selectedNumber = (int)printUtil.getNumber("Введите пункт меню: ",false);
+        int selectedNumber = (int)printUtil.getNumberInRange("Введите пункт меню: ",0,Double.MAX_VALUE);
 
         if(selectedNumber==0){
             if(isTasks){
