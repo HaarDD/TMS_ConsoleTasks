@@ -3,6 +3,13 @@ package base;
 import java.util.Scanner;
 
 public class PrintUtil {
+    private static PrintUtil instance;
+    public static PrintUtil getInstance() {
+        if (instance == null) {
+            instance = new PrintUtil();
+        }
+        return instance;
+    }
     private static Scanner scanner;
 
     private double getNumber(String comment, boolean isNatural, double minValue, double maxValue) {

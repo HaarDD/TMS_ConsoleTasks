@@ -1,11 +1,10 @@
 package lecture2;
 
-import base.PrintUtil;
 import base.TaskBase;
 
 public class L2Practice extends TaskBase {
-    public L2Practice(PrintUtil printUtil) {
-        super(printUtil, 1,"Практика. Вывод поры года по номеру, вывод чисел из while, вывод чисел из for по условиям");
+    public L2Practice() {
+        super( 1,"Практика. Вывод поры года по номеру, вывод чисел из while, вывод чисел из for по условиям");
     }
 
     @Override

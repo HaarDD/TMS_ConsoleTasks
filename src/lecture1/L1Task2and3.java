@@ -1,7 +1,6 @@
 package lecture1;
 
 import base.TaskBase;
-import base.PrintUtil;
 
 /*Задача 2. В переменной n хранится двузначное число. Создайте программу, вычисляющую и
     выводящую на экран сумму цифр n. Например: n =26, в результате мы должны получить 8 (2+6).*/
@@ -11,8 +10,8 @@ import base.PrintUtil;
 //TODO: сделать очистку введенного числа от лишних знаков (на данный момент учитывает -)
 public class L1Task2and3 extends TaskBase {
 
-    public L1Task2and3(PrintUtil printUtil){
-        super(printUtil,3,"(2-3) Сумма цифр числа");
+    public L1Task2and3(){
+        super(3,"(2-3) Сумма цифр числа");
     }
     @Override
     public void runTask() {

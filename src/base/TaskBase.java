@@ -3,9 +3,9 @@ package base;
 public abstract class TaskBase extends MenuOption{
     public PrintUtil printUtil;
 
-    public TaskBase(PrintUtil printUtil, int number, String name) {
+    public TaskBase(int number, String name) {
         super(number,name);
-        this.printUtil = printUtil;
+        this.printUtil = PrintUtil.getInstance();
     }
 
     public void runTask() {
