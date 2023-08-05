@@ -4,25 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TasksSwitcher {
-    final private static PrintUtil printUtil = new PrintUtil();
     private final List<Lecture> lectures = new ArrayList<>();
 
     public void addLecture(Lecture lecture){
         lectures.add(lecture);
     }
     public void printMenuList(MenuOption[] options){
-        printUtil.printLineDelimiter();
+        PrintUtil.printLineDelimiter();
         for (MenuOption option : options) {
-            printUtil.printOption(option);
+            PrintUtil.printOption(option);
         }
-        printUtil.print("0. Выход");
-        printUtil.printLineDelimiter();
+        PrintUtil.print("0. Выход");
+        PrintUtil.printLineDelimiter();
     }
 
     public void runMenu(MenuOption[] options){
         boolean isTasks = options instanceof TaskBase[];
         printMenuList(options);
-        int selectedNumber = (int)printUtil.getNumberInRange("Введите пункт меню: ",0,Double.MAX_VALUE);
+        int selectedNumber = (int)PrintUtil.getNumberInRange("Введите пункт меню: ",0,Double.MAX_VALUE);
 
         if(selectedNumber==0){
             if(isTasks){
@@ -38,12 +37,12 @@ public class TasksSwitcher {
             if(optionWasFound){
                 ((TaskBase)findOption(options,selectedNumber)).runTask();
             }else{
-                printUtil.print("Такого пункта меню нет! Попробуйте еще раз");
+                PrintUtil.print("Такого пункта меню нет! Попробуйте еще раз");
             }
             runMenu(options);
         } else{
             if(!optionWasFound){
-                printUtil.print("Такого пункта меню нет! Попробуйте еще раз");
+                PrintUtil.print("Такого пункта меню нет! Попробуйте еще раз");
             }
             runMenu(((Lecture) findOption(options,selectedNumber)).getTasksList());
         }

@@ -1,5 +1,6 @@
 package lecture1;
 
+import base.PrintUtil;
 import base.TaskBase;
 
 /*Задача 2. В переменной n хранится двузначное число. Создайте программу, вычисляющую и
@@ -15,9 +16,9 @@ public class L1Task2and3 extends TaskBase {
     }
     @Override
     public void runTask() {
-        printUtil.printOption(this);
-        int n = (int)printUtil.getNumber("Исходное число: ");
+        PrintUtil.printOption(this);
+        int n = (int)PrintUtil.getNumber("Исходное число: ");
         int sum = String.valueOf(n).chars().filter(Character::isDigit).map(Character::getNumericValue).sum();
-        printUtil.print("Сумма цифр числа \"" + n + "\": " + sum);
+        PrintUtil.print("Сумма цифр числа \"" + n + "\": " + sum);
     }
 }

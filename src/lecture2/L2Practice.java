@@ -1,5 +1,6 @@
 package lecture2;
 
+import base.PrintUtil;
 import base.TaskBase;
 
 public class L2Practice extends TaskBase {
@@ -9,9 +10,9 @@ public class L2Practice extends TaskBase {
 
     @Override
     public void runTask() {
-        printUtil.printOption(this);
-        double monthNumber = Math.floor(printUtil.getNumberInRange("Введите номер месяца: ",1,12));
-        printUtil.print(getMonthAndSeasonName(monthNumber));
+        PrintUtil.printOption(this);
+        double monthNumber = Math.floor(PrintUtil.getNumberInRange("Введите номер месяца: ",1,12));
+        PrintUtil.print(getMonthAndSeasonName(monthNumber));
     }
 
     private String getMonthAndSeasonName(double seasonNumber) {

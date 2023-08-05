@@ -1,5 +1,6 @@
 package lecture1;
 
+import base.PrintUtil;
 import base.TaskBase;
 
 /* Задача 2. Написать приложение, которое будет вычислять и выводить значение по формуле:
@@ -11,9 +12,9 @@ public class L1Task1 extends TaskBase {
 
     @Override
     public void runTask() {
-        printUtil.printOption(this);
-        Double b = printUtil.getNumber("Число b: "), c = printUtil.getNumber("Число c: ");
+        PrintUtil.printOption(this);
+        Double b = PrintUtil.getNumber("Число b: "), c = PrintUtil.getNumber("Число c: ");
         double result = (4 * (b + c - 1) / 2);
-        printUtil.print("Результат: 4 * ("+b+" + "+c+" - 1) / 2 = " + result);
+        PrintUtil.print("Результат: 4 * ("+b+" + "+c+" - 1) / 2 = " + result);
     }
 }

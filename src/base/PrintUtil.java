@@ -3,18 +3,9 @@ package base;
 import java.util.Scanner;
 
 public class PrintUtil {
-    private static PrintUtil instance;
-    public static PrintUtil getInstance() {
-        if (instance == null) {
-            instance = new PrintUtil();
-        }
-        return instance;
-    }
-    private static Scanner scanner;
-
-    private double getNumber(String comment, boolean isNatural, double minValue, double maxValue) {
+    private static double getNumber(String comment, boolean isNatural, double minValue, double maxValue) {
         print(comment,true);
-        scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         boolean isDoubleInConsole = scanner.hasNextDouble();
         if (isDoubleInConsole) {
             double value = scanner.nextDouble();
@@ -33,37 +24,37 @@ public class PrintUtil {
 
     }
 
-    public double getNumber(String comment) {
+    public static double getNumber(String comment) {
         return getNumber(comment,false,Double.MIN_VALUE,Double.MAX_VALUE);
     }
 
-    public double getNaturalNumber(String comment) {
+    public static double getNaturalNumber(String comment) {
         return getNumber(comment,true,Double.MIN_VALUE,Double.MAX_VALUE);
     }
 
-    public double getNumberInRange(String comment, double minValue, double maxValue) {
-        return getNumber(comment,true,minValue,maxValue);
+    public static double getNumberInRange(String comment, double minValue, double maxValue) {
+        return getNumber(comment,false,minValue,maxValue);
     }
 
-    public void print(Object text) {
+    public static void print(Object text) {
         System.out.println(text);
     }
-    public void print(Object text, boolean isNotNewLine) {
+    public static void print(Object text, boolean isNotNewLine) {
         if(isNotNewLine)System.out.print(text);
     }
 
-    public void printOption(MenuOption option) {
+    public static void printOption(MenuOption option) {
         print(option.getNumber() + ". " + option.getName());
     }
-    public void printLineDelimiter() {
+    public static void printLineDelimiter() {
         print("--------------------------");
     }
 
-    public void printName(String name, String surname) {
+    public static void printName(String name, String surname) {
         print("Имя: " + name + "\nФамилия: " + surname);
     }
 
-    public void printNameWithAge(String name, String surname, int age) {
+    public static void printNameWithAge(String name, String surname, int age) {
         print("Имя: " + name + "\nФамилия: " + surname + "\nВозраст: " + age);
     }
 

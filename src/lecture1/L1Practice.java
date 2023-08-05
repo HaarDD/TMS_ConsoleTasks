@@ -1,5 +1,6 @@
 package lecture1;
 
+import base.PrintUtil;
 import base.TaskBase;
 
 public class L1Practice extends TaskBase {
@@ -9,8 +10,8 @@ public class L1Practice extends TaskBase {
 
     @Override
     public void runTask() {
-        printUtil.printOption(this);
-        printUtil.printName("Максим","Галицкий");
-        printUtil.printNameWithAge("Максим","Галицкий",23);
+        PrintUtil.printOption(this);
+        PrintUtil.printName("Максим","Галицкий");
+        PrintUtil.printNameWithAge("Максим","Галицкий",23);
     }
 }

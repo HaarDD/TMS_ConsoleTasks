@@ -1,5 +1,6 @@
 package lecture1;
 
+import base.PrintUtil;
 import base.TaskBase;
 /*Задача 4. В переменной n хранится вещественное число с ненулевой дробной частью. Создайте
         программу, округляющую число n до ближайшего целого и выводящую результат на
@@ -10,8 +11,8 @@ public class L1Task4 extends TaskBase {
         super(4, "Округление числа до ближайшего целого");    }
     @Override
     public void runTask() {
-        printUtil.printOption(this);
-        double fractionalNumber = printUtil.getNumber("Исходное число: ");
-        printUtil.print("Округленное число: "+ Math.round(fractionalNumber));
+        PrintUtil.printOption(this);
+        double fractionalNumber = PrintUtil.getNumber("Исходное число: ");
+        PrintUtil.print("Округленное число: "+ Math.round(fractionalNumber));
     }
 }

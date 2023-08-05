@@ -1,5 +1,6 @@
 package lecture1;
 
+import base.PrintUtil;
 import base.TaskBase;
 /*Задача 6*. Написать программу которая будет менять местами значение целочисленных
         переменных. Пример:
@@ -13,12 +14,12 @@ public class L1Task6 extends TaskBase {
         super(6,"Подмена содержимого переменных типа int");    }
     @Override
     public void runTask() {
-        int a = (int) printUtil.getNumber("Число a: "),
-                b = (int)printUtil.getNumber("Число b ");
-        printUtil.print("До подмены: a = " + a + " b = "+b);
+        int a = (int) PrintUtil.getNumber("Число a: "),
+                b = (int)PrintUtil.getNumber("Число b ");
+        PrintUtil.print("До подмены: a = " + a + " b = "+b);
         int temp = a;
         a = b;
         b = temp;
-        printUtil.print("После подмены: a = " + a + " b = "+b);
+        PrintUtil.print("После подмены: a = " + a + " b = "+b);
     }
 }

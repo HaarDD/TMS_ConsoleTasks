@@ -1,5 +1,6 @@
 package lecture1;
 
+import base.PrintUtil;
 import base.TaskBase;
 
 /*Задача 5. В переменных q и w хранятся два натуральных числа. Создайте программу, выводящую
@@ -13,8 +14,8 @@ public class L1Task5 extends TaskBase {
 
     @Override
     public void runTask() {
-        int q = (int) printUtil.getNaturalNumber("Введите натуральное число q: "),
-                w = (int) printUtil.getNaturalNumber("Введите натуральное число w: ");
-        printUtil.print("Деление с остатком: " + q + " / " + w + " = " + (q / w) + " и " + (q % w) + " в остатке");
+        int q = (int) PrintUtil.getNaturalNumber("Введите натуральное число q: "),
+                w = (int) PrintUtil.getNaturalNumber("Введите натуральное число w: ");
+        PrintUtil.print("Деление с остатком: " + q + " / " + w + " = " + (q / w) + " и " + (q % w) + " в остатке");
     }
 }
