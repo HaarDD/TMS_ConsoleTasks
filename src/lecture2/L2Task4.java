@@ -14,13 +14,13 @@ public class L2Task4 extends TaskBase {
     @Override
     public void runTask() {
         PrintUtil.printOption(this);
-        String result = "Последовательность: ";
+        StringBuilder result = new StringBuilder("Последовательность: ");
         int i = 7;
         while (i<=98){
-            result+=i + " ";
+            result.append(i).append(" ");
             i+=7;
         }
-        PrintUtil.print(result);
+        PrintUtil.print(result.toString());
 
     }
 }

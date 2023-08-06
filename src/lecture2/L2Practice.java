@@ -23,19 +23,19 @@ public class L2Practice extends TaskBase {
         double monthNumber = Math.floor(PrintUtil.getNumberInRange("Задача №1. Введите номер месяца: ", 1, 12));
         PrintUtil.print(getMonthAndSeasonName(monthNumber));
 
-        String resultTask2 = "Задача №2. ";
+        StringBuilder resultTask2 = new StringBuilder("Задача №2. ");
         int iterator = 0;
         while(iterator<=25){
-            resultTask2 += iterator + " ";
+            resultTask2.append(iterator).append(" ");
             iterator++;
         }
-        PrintUtil.print(resultTask2);
+        PrintUtil.print(resultTask2.toString());
 
-        String resultTask3 = "Задача №3. ";
+        StringBuilder resultTask3 = new StringBuilder("Задача №3. ");
         for (int i = 2; i <= 20; i += 2) {
-            if (i > 10) resultTask3 += i + " ";
+            if (i > 10) resultTask3.append(i).append(" ");
         }
-        PrintUtil.print(resultTask3);
+        PrintUtil.print(resultTask3.toString());
     }
 
     private String getMonthAndSeasonName(double seasonNumber) {

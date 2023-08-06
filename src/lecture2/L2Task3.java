@@ -13,10 +13,10 @@ public class L2Task3 extends TaskBase {
     @Override
     public void runTask() {
         PrintUtil.printOption(this);
-        String result = "Число[квадрат числа]: ";
+        StringBuilder result = new StringBuilder("Число[квадрат числа]: ");
         for(int i = 10;i<=20;i++){
-            result += i + "[" + i*i + "] ";
+            result.append(i).append("[").append(i * i).append("] ");
         }
-        PrintUtil.print(result);
+        PrintUtil.print(result.toString());
     }
 }
