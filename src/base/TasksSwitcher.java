@@ -26,8 +26,6 @@ public class TasksSwitcher {
         if(selectedNumber==0){
             if(isTasks){
                 runTasksSwitcher();
-            } else {
-                return;
             }
             return;
         }
@@ -41,10 +39,13 @@ public class TasksSwitcher {
             }
             runMenu(options);
         } else{
-            if(!optionWasFound){
+            if(optionWasFound){
+                runMenu(((Lecture) findOption(options,selectedNumber)).getTasksList());
+                return;
+            } else{
                 PrintUtil.print("Такого пункта меню нет! Попробуйте еще раз");
             }
-            runMenu(((Lecture) findOption(options,selectedNumber)).getTasksList());
+            runMenu(options);
         }
     }
     public MenuOption findOption(MenuOption[] options, int position){
