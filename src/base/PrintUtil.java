@@ -12,7 +12,7 @@ public class PrintUtil {
             if(isNatural && value < 1){
                 print("Это не натуральное число! Попробуйте еще раз");
                 return getNumber(comment,isNatural,minValue,maxValue);
-            }else if(value<minValue || value>maxValue){
+            }else if(!(value >= minValue && value <= maxValue)){
                 print("Число не входит в допустимый диапазон! Попробуйте еще раз");
                 return getNumber(comment,isNatural,minValue,maxValue);
             } else {
@@ -25,15 +25,19 @@ public class PrintUtil {
     }
 
     public static double getNumber(String comment) {
-        return getNumber(comment,false,Double.MIN_VALUE,Double.MAX_VALUE);
+        return getNumber(comment,false,-Double.MAX_VALUE,Double.MAX_VALUE);
     }
 
     public static double getNaturalNumber(String comment) {
-        return getNumber(comment,true,Double.MIN_VALUE,Double.MAX_VALUE);
+        return getNumber(comment,true,-Double.MAX_VALUE,Double.MAX_VALUE);
     }
 
     public static double getNumberInRange(String comment, double minValue, double maxValue) {
         return getNumber(comment,false,minValue,maxValue);
+    }
+
+    public static double getNumberInRange(String comment, double minValue) {
+        return getNumber(comment,false,minValue,Double.MAX_VALUE);
     }
 
     public static void print(Object text) {
@@ -51,11 +55,11 @@ public class PrintUtil {
     }
 
     public static void printName(String name, String surname) {
-        print("Имя: " + name + "\nФамилия: " + surname);
+        print("Имя: " + name + "\tФамилия: " + surname);
     }
 
     public static void printNameWithAge(String name, String surname, int age) {
-        print("Имя: " + name + "\nФамилия: " + surname + "\nВозраст: " + age);
+        print("Имя: " + name + "\tФамилия: " + surname + "\tВозраст: " + age);
     }
 
 }
