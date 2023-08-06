@@ -8,9 +8,9 @@ import base.TaskBase;
 //код (ваше решение)
         sout(a); //выведет 2
         sout(b); //выведет 1*/
-public class L1Task6 extends TaskBase {
+public class L1Task6star extends TaskBase {
 
-    public L1Task6(){
+    public L1Task6star(){
         super(6,"Подмена содержимого переменных типа int");    }
     @Override
     public void runTask() {
