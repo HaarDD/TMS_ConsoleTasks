@@ -15,6 +15,6 @@ public class L3Task1 extends TaskBase {
     @Override
     public void runTask() {
         PrintUtil.printOption(this);
-        PrintUtil.print("Привет, git!");
+        PrintUtil.print("Привет, git! (lesson3)");
     }
 }
