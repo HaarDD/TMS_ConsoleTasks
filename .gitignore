@@ -1,5 +1,5 @@
-!**/TMS_ConsoleTasks.iml
-!**/.idea/
+*.iml
+.idea
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
