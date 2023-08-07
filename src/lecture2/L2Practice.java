@@ -25,7 +25,7 @@ public class L2Practice extends TaskBase {
 
         StringBuilder resultTask2 = new StringBuilder("Задача №2. ");
         int iterator = 0;
-        while(iterator<=25){
+        while (iterator <= 25) {
             resultTask2.append(iterator).append(" ");
             iterator++;
         }

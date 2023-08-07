@@ -6,10 +6,11 @@ import java.util.List;
 public class TasksSwitcher {
     private final List<Lecture> lectures = new ArrayList<>();
 
-    public void addLecture(Lecture lecture){
+    public void addLecture(Lecture lecture) {
         lectures.add(lecture);
     }
-    public void printMenuList(MenuOption[] options){
+
+    public void printMenuList(MenuOption[] options) {
         PrintUtil.printLineDelimiter();
         for (MenuOption option : options) {
             PrintUtil.printOption(option);
@@ -18,45 +19,47 @@ public class TasksSwitcher {
         PrintUtil.printLineDelimiter();
     }
 
-    public void runMenu(MenuOption[] options){
+    public void runMenu(MenuOption[] options) {
         boolean isTasks = options instanceof TaskBase[];
         printMenuList(options);
-        int selectedNumber = (int)PrintUtil.getNumberInRange("Введите пункт меню: ",0,Double.MAX_VALUE);
+        int selectedNumber = (int) PrintUtil.getNumberInRange("Введите пункт меню: ", 0, Double.MAX_VALUE);
 
-        if(selectedNumber==0){
-            if(isTasks){
+        if (selectedNumber == 0) {
+            if (isTasks) {
                 runTasksSwitcher();
             }
             return;
         }
-        boolean optionWasFound = findOption(options,selectedNumber) != null;
+        boolean optionWasFound = findOption(options, selectedNumber) != null;
 
-        if(isTasks){
-            if(optionWasFound){
-                ((TaskBase)findOption(options,selectedNumber)).runTask();
-            }else{
+        if (isTasks) {
+            if (optionWasFound) {
+                ((TaskBase) findOption(options, selectedNumber)).runTask();
+            } else {
                 PrintUtil.print("Такого пункта меню нет! Попробуйте еще раз");
             }
             runMenu(options);
-        } else{
-            if(optionWasFound){
-                runMenu(((Lecture) findOption(options,selectedNumber)).getTasksList());
+        } else {
+            if (optionWasFound) {
+                runMenu(((Lecture) findOption(options, selectedNumber)).getTasksList());
                 return;
-            } else{
+            } else {
                 PrintUtil.print("Такого пункта меню нет! Попробуйте еще раз");
             }
             runMenu(options);
         }
     }
-    public MenuOption findOption(MenuOption[] options, int position){
+
+    public MenuOption findOption(MenuOption[] options, int position) {
         for (MenuOption option : options) {
-            if(option.getNumber()==position){
+            if (option.getNumber() == position) {
                 return option;
             }
         }
         return null;
     }
-    public void runTasksSwitcher(){
+
+    public void runTasksSwitcher() {
         runMenu(lectures.toArray(Lecture[]::new));
     }
 }
