@@ -6,7 +6,7 @@ import java.util.List;
 public class TasksSwitcher {
     private final List<Lesson> lessons = new ArrayList<>();
 
-    public void addLecture(Lesson lesson) {
+    public void addLesson(Lesson lesson) {
         lessons.add(lesson);
     }
 
