@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TasksSwitcher {
-    private final List<Lecture> lectures = new ArrayList<>();
+    private final List<Lesson> lessons = new ArrayList<>();
 
-    public void addLecture(Lecture lecture) {
-        lectures.add(lecture);
+    public void addLecture(Lesson lesson) {
+        lessons.add(lesson);
     }
 
     public void printMenuList(MenuOption[] options) {
@@ -41,7 +41,7 @@ public class TasksSwitcher {
             runMenu(options);
         } else {
             if (optionWasFound) {
-                runMenu(((Lecture) findOption(options, selectedNumber)).getTasksList());
+                runMenu(((Lesson) findOption(options, selectedNumber)).getTasksList());
                 return;
             } else {
                 PrintUtil.print("Такого пункта меню нет! Попробуйте еще раз");
@@ -60,6 +60,6 @@ public class TasksSwitcher {
     }
 
     public void runTasksSwitcher() {
-        runMenu(lectures.toArray(Lecture[]::new));
+        runMenu(lessons.toArray(Lesson[]::new));
     }
 }

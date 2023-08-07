@@ -1,4 +1,4 @@
-package lecture1;
+package lesson1;
 
 import base.PrintUtil;
 import base.TaskBase;
