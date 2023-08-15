@@ -36,7 +36,7 @@ public class Tree {
     //TODO удаление числа
 
     public interface NodeAction {
-        public void act(Tree tree);
+        void act(Tree tree);
     }
 
     public static class AddToSortedList implements NodeAction {

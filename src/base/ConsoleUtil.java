@@ -103,12 +103,8 @@ public class ConsoleUtil {
                 + "\n" + INPUT_ARR_RANDOM_MANUAL + " - случайные числа в диапазоне\nВыберите: ", 1, 3) : arrayInputType;
 
         switch (arrayInputTypeV) {
-            case INPUT_ARR_RANDOM -> {
-                randomizeDoubleArray(arrDouble, randomFromDefault, randomToDefault, 2);
-            }
-            case INPUT_ARR_MANUAL -> {
-                inputDoubleArray(arrDouble, from, to, 2);
-            }
+            case INPUT_ARR_RANDOM -> randomizeDoubleArray(arrDouble, randomFromDefault, randomToDefault, 2);
+            case INPUT_ARR_MANUAL -> inputDoubleArray(arrDouble, from, to, 2);
             case INPUT_ARR_RANDOM_MANUAL -> {
                 Pair range = getTrueRange(from, to);
                 randomizeDoubleArray(arrDouble, (double) range.getFirst(), (double) range.getSecond(), (int) getNumberInRange("Знаки после запятой: ", 0));
