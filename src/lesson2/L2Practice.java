@@ -1,7 +1,7 @@
 package lesson2;
 
-import base.PrintUtil;
-import base.TaskBase;
+import base.ConsoleUtil;
+import base.Runnable;
 
         /*Задача 1:
         Ввести с консоли любое число от 1 до 12. В зависимости от введённого числа вывести в
@@ -12,16 +12,15 @@ import base.TaskBase;
         Задача 3:
         Используя for вывести каждое четное число от 2 до 20 включительно и больше 10.*/
 
-public class L2Practice extends TaskBase {
+public class L2Practice extends Runnable {
     public L2Practice() {
-        super(1, "Практика. Вывод поры года по номеру, вывод чисел через while (от 0 до 25), вывод чисел через for (четные от 2 до 20 и больше 10)");
+        super("Практика. Вывод поры года по номеру, вывод чисел через while (от 0 до 25), вывод чисел через for (четные от 2 до 20 и больше 10)");
     }
 
     @Override
-    public void runTask() {
-        PrintUtil.printOption(this);
-        double monthNumber = Math.floor(PrintUtil.getNumberInRange("Задача №1. Введите номер месяца: ", 1, 12));
-        PrintUtil.print(getMonthAndSeasonName(monthNumber));
+    public void run() {
+        double monthNumber = Math.floor(ConsoleUtil.getNumberInRange("Задача №1. Введите номер месяца: ", 1, 12));
+        ConsoleUtil.print(getMonthAndSeasonName(monthNumber));
 
         StringBuilder resultTask2 = new StringBuilder("Задача №2. ");
         int iterator = 0;
@@ -29,13 +28,13 @@ public class L2Practice extends TaskBase {
             resultTask2.append(iterator).append(" ");
             iterator++;
         }
-        PrintUtil.print(resultTask2.toString());
+        ConsoleUtil.print(resultTask2.toString());
 
         StringBuilder resultTask3 = new StringBuilder("Задача №3. ");
         for (int i = 2; i <= 20; i += 2) {
             if (i > 10) resultTask3.append(i).append(" ");
         }
-        PrintUtil.print(resultTask3.toString());
+        ConsoleUtil.print(resultTask3.toString());
     }
 
     private String getMonthAndSeasonName(double seasonNumber) {
