@@ -1,7 +1,7 @@
 package lesson1;
 
-import base.PrintUtil;
-import base.TaskBase;
+import base.ConsoleUtil;
+import base.Runnable;
 
 /*Задача 1:
 Создать программу, которая будет выводить в консоли Ваше имя и фамилию.
@@ -9,15 +9,15 @@ import base.TaskBase;
 Добавить в программу целочисленную переменную с названием age, в которой будет
 храниться ваш возраст. Вывести в консоли ваше имя, фамилию и возраст.*/
 
-public class L1Practice extends TaskBase {
+public class L1Practice extends Runnable {
     public L1Practice() {
-        super(1, "Практика. Вывод имени, фамилии и фозраста в консоль");
+        super("Практика. Вывод имени, фамилии и фозраста в консоль");
     }
 
     @Override
-    public void runTask() {
-        PrintUtil.printOption(this);
-        PrintUtil.printName("Максим", "Галицкий");
-        PrintUtil.printNameWithAge("Максим", "Галицкий", 23);
+    public void run() {
+        ConsoleUtil.print(this.getName());
+        ConsoleUtil.printName("Максим", "Галицкий");
+        ConsoleUtil.printNameWithAge("Максим", "Галицкий", 23);
     }
 }
