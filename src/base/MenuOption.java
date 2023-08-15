@@ -1,16 +1,10 @@
 package base;
 
 abstract class MenuOption {
-    private final int number;
     private final String name;
 
-    public MenuOption(int number, String name) {
-        this.number = number;
+    public MenuOption(String name) {
         this.name = name;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public String getName() {
