@@ -24,10 +24,10 @@ public class L4Practice2 extends Runnable {
         String[] fruits = new String[]{"яблоко", "апельсин", "лимон", "абрикос", "мандарин",
                 "груша", "гранат", "персик", "киви", "виноград", "грейпфрут", "манго"};
         String[] fruitsRandomList = DataUtil.randomizeStringArray(fruits, 4);
-        ConsoleUtil.print(Arrays.toString(fruitsRandomList));
-        ConsoleUtil.print("Второй: " + fruitsRandomList[1] + "\nЧетвертый: " + fruitsRandomList[3] + "\nДлина массива: " + fruitsRandomList.length);
+        ConsoleUtil.println(Arrays.toString(fruitsRandomList));
+        ConsoleUtil.println("Второй: " + fruitsRandomList[1] + "\nЧетвертый: " + fruitsRandomList[3] + "\nДлина массива: " + fruitsRandomList.length);
         fruitsRandomList[2] = DataUtil.randomStringArrayValue(fruits);
-        ConsoleUtil.print("Изменен 3й элемент:\n" + Arrays.toString(fruitsRandomList));
+        ConsoleUtil.println("Изменен 3й элемент:\n" + Arrays.toString(fruitsRandomList));
     }
 
 }

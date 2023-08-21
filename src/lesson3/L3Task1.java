@@ -14,6 +14,6 @@ public class L3Task1 extends Runnable {
 
     @Override
     public void run() {
-        ConsoleUtil.print("Привет, git! (lesson3)");
+        ConsoleUtil.println("Привет, git! (lesson3)");
     }
 }

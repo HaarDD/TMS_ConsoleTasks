@@ -27,16 +27,16 @@ public class L4Task3 extends Runnable {
             }
         }
 
-        ConsoleUtil.print("Массив:\t\t" + Arrays.toString(array));
+        ConsoleUtil.println("Массив:\t\t" + Arrays.toString(array));
 
         if (!zeroValues.isEmpty()) {
             StringBuilder zeroValuesText = new StringBuilder("Нулевые значения ([индекс:число]): ");
             for (Integer zeroValue : zeroValues) {
                 zeroValuesText.append("[").append(zeroValue).append(":").append(array[zeroValue]).append("] ");
             }
-            ConsoleUtil.print(zeroValuesText);
+            ConsoleUtil.println(zeroValuesText);
         } else {
-            ConsoleUtil.print("Нулевых значений нет!");
+            ConsoleUtil.println("Нулевых значений нет!");
         }
     }
 }

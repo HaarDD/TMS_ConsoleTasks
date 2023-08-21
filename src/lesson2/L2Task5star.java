@@ -23,6 +23,6 @@ public class L2Task5star extends Runnable {
             steps.append(i).append("+");
         }
         String stepsStr = steps.toString().length() < 1 ? "" : steps.substring(0, steps.length() - 1);
-        ConsoleUtil.print("Сумма чисел от 1 до " + value + " невключительно:\n" + stepsStr + " = " + result);
+        ConsoleUtil.println("Сумма чисел от 1 до " + value + " невключительно:\n" + stepsStr + " = " + result);
     }
 }

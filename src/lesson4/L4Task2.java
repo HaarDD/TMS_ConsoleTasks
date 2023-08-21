@@ -32,8 +32,8 @@ public class L4Task2 extends Runnable {
                 maxIndex = i;
             }
         }
-        ConsoleUtil.print("Массив:\t\t" + Arrays.toString(array));
-        ConsoleUtil.print("Минимальное число и его индекс: [" + min + ", " + minIndex + "]");
-        ConsoleUtil.print("Максимальное число и его индекс: [" + max + ", " + maxIndex + "]");
+        ConsoleUtil.println("Массив:\t\t" + Arrays.toString(array));
+        ConsoleUtil.println("Минимальное число и его индекс: [" + min + ", " + minIndex + "]");
+        ConsoleUtil.println("Максимальное число и его индекс: [" + max + ", " + maxIndex + "]");
     }
 }

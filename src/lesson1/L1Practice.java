@@ -16,7 +16,7 @@ public class L1Practice extends Runnable {
 
     @Override
     public void run() {
-        ConsoleUtil.print(this.getName());
+        ConsoleUtil.println(this.getName());
         ConsoleUtil.printName("Максим", "Галицкий");
         ConsoleUtil.printNameWithAge("Максим", "Галицкий", 23);
     }

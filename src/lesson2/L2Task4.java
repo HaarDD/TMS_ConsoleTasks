@@ -19,7 +19,7 @@ public class L2Task4 extends Runnable {
             result.append(i).append(" ");
             i += 7;
         }
-        ConsoleUtil.print(result.toString());
+        ConsoleUtil.println(result.toString());
 
     }
 }

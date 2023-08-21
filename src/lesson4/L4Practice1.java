@@ -1,6 +1,7 @@
 package lesson4;
 
 import base.ConsoleUtil;
+import base.Pair;
 import base.Runnable;
 
 import java.util.Arrays;
@@ -16,13 +17,12 @@ public class L4Practice1 extends Runnable {
 
     @Override
     public void run() {
-        double[] values = new double[5];
-        ConsoleUtil.randomizeDoubleArray(values, 1, 10, 0);
-        ConsoleUtil.print("Исходный массив:\t" + Arrays.toString(Arrays.stream(values).mapToInt(value -> (int) value).toArray()));
+        double[] values = ConsoleUtil.generateRandomDoubleArray(5, new Pair(1, 10), 0);
+        ConsoleUtil.println("Исходный массив:\t" + Arrays.toString(values));
         for (int i = 0; i < values.length; i++) {
             values[i] *= values[i];
         }
-        ConsoleUtil.print("Квадраты чисел:\t" + Arrays.toString(Arrays.stream(values).mapToInt(value -> (int) value).toArray()));
+        ConsoleUtil.println("Квадраты чисел:\t" + Arrays.toString(values));
     }
 
 }

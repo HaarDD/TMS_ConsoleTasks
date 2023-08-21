@@ -16,6 +16,6 @@ public class L1Task5 extends Runnable {
     public void run() {
         int q = (int) ConsoleUtil.getNaturalNumber("Введите натуральное число q: "),
                 w = (int) ConsoleUtil.getNaturalNumber("Введите натуральное число w: ");
-        ConsoleUtil.print("Деление с остатком: " + q + " / " + w + " = " + (q / w) + " и " + (q % w) + " в остатке");
+        ConsoleUtil.println("Деление с остатком: " + q + " / " + w + " = " + (q / w) + " и " + (q % w) + " в остатке");
     }
 }
