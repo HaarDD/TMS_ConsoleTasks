@@ -16,7 +16,7 @@ public class TasksSwitcher {
             ConsoleUtil.printOption(i + 1, options[i]);
         }
 
-        ConsoleUtil.print("0. Выход");
+        ConsoleUtil.println("0. Выход");
         ConsoleUtil.printLineDelimiter();
     }
 
@@ -37,7 +37,7 @@ public class TasksSwitcher {
             if (optionWasFound) {
                 ((Runnable) findOption(options, selectedNumber)).run();
             } else {
-                ConsoleUtil.print("Такого пункта меню нет! Попробуйте еще раз");
+                ConsoleUtil.println("Такого пункта меню нет! Попробуйте еще раз");
             }
             runMenu(options);
         } else {
@@ -45,7 +45,7 @@ public class TasksSwitcher {
                 runMenu(((RunnableContainer) findOption(options, selectedNumber)).getTasksList());
                 return;
             } else {
-                ConsoleUtil.print("Такого пункта меню нет! Попробуйте еще раз");
+                ConsoleUtil.println("Такого пункта меню нет! Попробуйте еще раз");
             }
             runMenu(options);
         }
