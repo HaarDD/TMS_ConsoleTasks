@@ -1,10 +1,8 @@
 package lesson5;
 
-import base.ConsoleUtil;
-import base.Pair;
 import base.Runnable;
 
-import static base.ConsoleUtil.INPUT_ARR_RANDOM;
+import static base.ConsoleUtil.printIntMatrix;
 import static base.ConsoleUtil.println;
 
 /*Задача 3:
@@ -17,11 +15,17 @@ public class L5Practice3 extends Runnable {
 
     @Override
     public void run() {
-        Object[] values = ConsoleUtil.getMultiArrayWithParameters(3, INPUT_ARR_RANDOM, new Pair(1d, 3d), 2);
-        double sum = 0;
-        for (int i = 0; i < values.length; i++) {
-            for (int j = 0; j < values[i].length; j++) {
-                if (i == j) sum += values[i][j];
+        int[][] board = new int[5][5];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][i % 2 == 0 ? j : (board[i].length - 1 - j)] = (i * board[i].length) + j;
+            }
+        }
+        printIntMatrix(board, 3);
+        int sum = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (i == j) sum += board[i][j];
             }
         }
         println("Сумма элементов главной диагонали: " + sum);
