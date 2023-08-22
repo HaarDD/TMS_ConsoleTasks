@@ -2,7 +2,6 @@ package lesson4;
 
 import base.ConsoleUtil;
 import base.Runnable;
-import base.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;

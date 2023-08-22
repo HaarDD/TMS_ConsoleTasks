@@ -23,6 +23,6 @@ public class L4Task1 extends Runnable {
     public void run() {
         double[] array = ConsoleUtil.getDoubleArrayMenu();
         ConsoleUtil.println("Массив в прямом порядке:\t\t" + Arrays.toString(array));
-        ConsoleUtil.println("Массив в обратном порядке:\t" + Arrays.toString(DataUtil.revertArray(array)));
+        ConsoleUtil.println("Массив в обратном порядке:\t" + Arrays.toString(DataUtil.reverseArray(array)));
     }
 }

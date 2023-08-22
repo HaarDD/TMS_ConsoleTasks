@@ -165,7 +165,6 @@ public class ConsoleUtil {
         return getMultiArrayBase(defaultLength, defaultInputMethod, defaultRange, nesting);
     }
 
-
     private static Object[] getMultiArrayBase(int defaultUsualMultiArrayLength, int defaultInputMethod, Pair defaultRange, int nesting) {
         int length = defaultUsualMultiArrayLength == DEFAULT_VALUE ? (int) ConsoleUtil.getNumberInRange("Введите размер массива уровня " + nesting + ": ", 2, 100) : defaultUsualMultiArrayLength;
 
@@ -186,12 +185,10 @@ public class ConsoleUtil {
             int multiArrayType = defaultUsualMultiArrayLength != DEFAULT_VALUE ? MULTI_ARRAY_TYPE_USUAL : getMultiArrayType();
             if (multiArrayType == MULTI_ARRAY_TYPE_USUAL) {
                 for (int i = 0; i < objectArray.length; i++) {
-                    //print("Массив " + (i + 1));
                     objectArray[i] = getMultiArrayBase(length, trueInputMethod, defaultRange, nesting - 1);
                 }
             } else if (multiArrayType == MULTI_ARRAY_TYPE_JAGGED) {
                 for (int i = 0; i < objectArray.length; i++) {
-                    //print("Массив " + (i + 1));
                     objectArray[i] = getMultiArrayBase(DEFAULT_VALUE, defaultInputMethod, defaultRange, nesting - 1);
                 }
             }
