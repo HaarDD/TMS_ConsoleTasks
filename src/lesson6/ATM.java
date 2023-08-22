@@ -25,10 +25,9 @@ public class ATM {
 
     public ATM(Banknote... banknotes) {
         addBanknotes(banknotes);
-        runATM();
     }
 
-    public void addBanknotes(Banknote... banknotes) {
+    private void addBanknotes(Banknote... banknotes) {
         for (Banknote banknote : banknotes) {
             for (int i = 0; i < banknote.count; i++) {
                 this.banknotesSet.add(banknote.getBanknote());
@@ -172,7 +171,7 @@ public class ATM {
         ConsoleUtil.println("Банкомат не обладает нужным количеством купюр для снятия " + money + " руб.");
     }
 
-    private void runATM() {
+    public void runATM() {
         final int GIVE_MONEY_GREEDILY = 1;
         final int GIVE_MONEY_DYNAMIC = 2;
         final int ADD_BANKNOTE = 3;

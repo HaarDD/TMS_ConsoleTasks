@@ -19,6 +19,7 @@ public class L6Task2 extends Runnable {
     @Override
     public void run() {
         ATM atm = new ATM(new Banknote(1000, 1), new Banknote(800, 1), new Banknote(500, 1), new Banknote(100, 3));
+        atm.runATM();
     }
 
 
