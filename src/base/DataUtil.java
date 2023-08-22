@@ -44,9 +44,9 @@ public class DataUtil {
         return Math.round(value * scale) / scale;
     }
 
-    public static double[] revertArray(double[] array) {
+    public static double[] reverseArray(double[] array) {
         int length = array.length;
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < length / 2; i++) {
             double temp = array[i];
             array[i] = array[length - 1 - i];
             array[length - 1 - i] = temp;
