@@ -1,23 +1,18 @@
 package lesson7.clinic.objects;
 
 import lesson7.clinic.persons.Doctor;
-import lesson7.clinic.types.DiagnosisType;
 
 public class TreatmentPlan {
 
-    private DiagnosisType diagnosisType;
+    private String diagnosis;
     private Doctor treatmentDoctor;
 
     {
-        this.diagnosisType = null;
+        this.diagnosis = null;
     }
 
-    public TreatmentPlan(Doctor treatmentDoctor) {
-        this.treatmentDoctor = treatmentDoctor;
-    }
-
-    public TreatmentPlan(DiagnosisType diagnosisType, Doctor treatmentDoctor) {
-        this.diagnosisType = diagnosisType;
+    public TreatmentPlan(Doctor treatmentDoctor, String diagnosis) {
+        this.diagnosis = diagnosis;
         this.treatmentDoctor = treatmentDoctor;
     }
 
@@ -29,16 +24,16 @@ public class TreatmentPlan {
         this.treatmentDoctor = treatmentDoctor;
     }
 
-    public DiagnosisType getDiagnosisType() {
-        return diagnosisType;
+    public String getDiagnosisName() {
+        return diagnosis;
     }
 
-    public void setDiagnosisType(DiagnosisType diagnosisType) {
-        this.diagnosisType = diagnosisType;
+    public void setDiagnosis(String diagnosis) {
+        this.diagnosis = diagnosis;
     }
 
     @Override
     public String toString() {
-        return "(" + "Лечащий врач:" + treatmentDoctor + " Диагноз: " + (diagnosisType != null ? diagnosisType.getTypeName() : "Не определен") + ")";
+        return "(" + "Лечащий врач:" + treatmentDoctor + " Диагноз: " + (diagnosis != null ? diagnosis : "Не определен") + ")";
     }
 }

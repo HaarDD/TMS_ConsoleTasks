@@ -1,31 +1,27 @@
 package lesson7.clinic;
 
+import base.ConsoleUtil;
 import lesson7.clinic.objects.TreatmentPlan;
 import lesson7.clinic.persons.Doctor;
 import lesson7.clinic.persons.Patient;
-import lesson7.clinic.types.DiagnosisType;
-import lesson7.clinic.types.DoctorType;
+import lesson7.clinic.persons.doctors.Therapist;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 public class Clinic {
 
 
-    private List<Doctor> doctorList = new ArrayList<>();
+    private static List<Doctor> doctorList;
 
-    private List<Patient> patientList = new ArrayList<>();
-    private String clinicName;
-    private String address;
+    private final List<Patient> patientList;
+    private final String clinicName;
+    private final String address;
 
     {
-        DoctorType.addDoctorType(new DoctorType("Хирург"), new DoctorType("Дантист"), new DoctorType("Терапевт"));
-
-        DiagnosisType.addDiagnosisType(new DiagnosisType("Сколиоз", DoctorType.findDoctorTypeByName("Хирург")),
-                new DiagnosisType("Простуда", DoctorType.findDoctorTypeByName("Терапевт")),
-                new DiagnosisType("Кариес", DoctorType.findDoctorTypeByName("Дантист")));
+        doctorList = new ArrayList<>();
+        patientList = new ArrayList<>();
     }
 
     public Clinic(String clinicName, String address) {
@@ -44,7 +40,7 @@ public class Clinic {
     }
 
     private void addDoctor(Doctor doctor) {
-        this.doctorList.add(doctor);
+        doctorList.add(doctor);
     }
 
     public void addDoctors(Doctor... doctors) {
@@ -53,52 +49,42 @@ public class Clinic {
         }
     }
 
-    //Назначить паценту план лечения, диагноз неизвестен. Терапевт назначается автоматически
-    public void patientSetTreatment(String patientSurname, String patientName) {
-        patientSetTreatmentBase(patientSurname, patientName, null);
-    }
-
-    //Назначить паценту план лечения, диагноз известен. Назначается свободный врач (isBusy) с нужным типом (определяется по диагнозу)
-    public void patientSetTreatment(String patientSurname, String patientName, DiagnosisType diagnosisType) {
-        patientSetTreatmentBase(patientSurname, patientName, diagnosisType);
-    }
-
-    public void patientSetTreatmentBase(String patientSurname, String patientName, DiagnosisType diagnosisType) {
-        Patient foundPatient = findPatientBySurnameName(patientSurname, patientName);
-        if (foundPatient != null) {
-            if (diagnosisType != null) {
-                Doctor foundDoctor = findFreeDoctorByType(diagnosisType.getDoctorType());
-                foundPatient.setTreatmentPlan(new TreatmentPlan(diagnosisType, foundDoctor));
-                foundDoctor.setBusy();
-            } else {
-                Doctor foundDoctor = findFreeDoctorByType(DoctorType.findDoctorTypeByName("Терапевт"));
-                foundPatient.setTreatmentPlan(new TreatmentPlan(foundDoctor));
-                foundDoctor.setBusy();
-            }
-        }
-    }
-
     //Найти пациента по фамилии и имени
-    private Patient findPatientBySurnameName(String patientSurname, String patientName) {
+    public Patient findPatientBySurnameName(String patientSurname, String patientName) {
         Optional<Patient> foundDoctorType = patientList.stream().filter(patient
                 -> patient.getSurname().equals(patientSurname) && patient.getName().equals(patientName)).findFirst();
         return foundDoctorType.orElse(null);
     }
 
-    //Найти свободного доктора по типу
-    private Doctor findFreeDoctorByType(DoctorType doctorType) {
-        Optional<Doctor> foundDoctor = doctorList.stream().filter(doctor
-                -> Objects.equals(doctor.getDoctorType().getTypeName(), doctorType.getTypeName())
-                && !doctor.isBusy()).findFirst();
+    //Найти свободного доктора по диагнозу (список дигнозов у кажого доктора свой). Статический, т.к. его нужно вызывать в других классах (терапевт)
+    public static Doctor findDoctorByDiagnosisName(String diagnosisName) {
+        Optional<Doctor> foundDoctor = doctorList.stream()
+                .filter(doctor -> doctor.findDiagnosis(diagnosisName) && !doctor.isBusy())
+                .findFirst();
         return foundDoctor.orElse(null);
     }
 
-    public String getPatientListString() {
-        return this.patientList.toString();
+    private static Therapist findFreeTherapist() {
+        Optional<Doctor> foundDoctor = doctorList.stream()
+                .filter(doctor -> doctor instanceof Therapist && !doctor.isBusy())
+                .findFirst();
+        return (Therapist) foundDoctor.orElse(null);
     }
 
-    public String getDoctorsListString() {
-        return this.doctorList.toString();
+    public void assignTreatmentPlan(Patient patient, String diagnosis) {
+        if (patient == null) {
+            ConsoleUtil.println("Пациента не существует");
+            return;
+        }
+        Therapist freeTherapist = findFreeTherapist();
+        if (freeTherapist != null) {
+            TreatmentPlan treatmentPlan = new TreatmentPlan(freeTherapist, diagnosis);
+            patient.setTreatmentPlan(treatmentPlan);
+            freeTherapist.startTreatment(treatmentPlan);
+        } else {
+            ConsoleUtil.println("На данный момент все терапевты заняты");
+        }
+
     }
 
     public String clinicStatusToString() {

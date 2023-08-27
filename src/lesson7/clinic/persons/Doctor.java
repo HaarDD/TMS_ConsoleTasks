@@ -1,50 +1,44 @@
 package lesson7.clinic.persons;
 
-import lesson7.clinic.types.DoctorType;
+import lesson7.clinic.objects.TreatmentPlan;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Doctor extends Person {
 
+    private List<String> diagnosesNameList;
 
     private boolean isBusy;
 
-    private DoctorType doctorType;
-
     {
         isBusy = false;
-        doctorType = DoctorType.findDoctorTypeByName("Терапевт");
+        diagnosesNameList = new ArrayList<>();
     }
 
-    public Doctor(String surname, String name, String patronymic) {
+    public Doctor(String surname, String name, String patronymic, String... diagnosesNameList) {
         super(surname, name, patronymic);
+        this.diagnosesNameList.addAll(List.of(diagnosesNameList));
     }
 
-    public Doctor(String surname, String name, String patronymic, DoctorType doctorType) {
-        super(surname, name, patronymic);
-        this.doctorType = doctorType;
+    public boolean findDiagnosis(String diagnosisName) {
+        return diagnosesNameList.stream().anyMatch(diagnosis -> diagnosis.equals(diagnosisName));
     }
 
     public boolean isBusy() {
         return isBusy;
     }
 
-    public void setBusy() {
-        isBusy = true;
+    public void startTreatment(TreatmentPlan treatmentPlan) {
+        this.isBusy = true;
     }
 
-    public void setFree() {
-        isBusy = false;
-    }
-
-    public DoctorType getDoctorType() {
-        return doctorType;
-    }
-
-    public void setDoctorType(DoctorType doctorType) {
-        this.doctorType = doctorType;
+    public void endTreatment() {
+        this.isBusy = false;
     }
 
     @Override
     public String toString() {
-        return "(" + super.toString() + " Тип: " + doctorType.getTypeName() + "; Лечит сейчас: " + (isBusy ? "Да" : "Нет") + ")";
+        return "(" + super.toString() + " Тип: " + this.getClass().getSimpleName() + "; Лечит сейчас: " + (isBusy ? "Да" : "Нет") + ")";
     }
 }

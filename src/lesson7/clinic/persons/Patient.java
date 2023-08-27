@@ -24,4 +24,5 @@ public class Patient extends Person {
     public String toString() {
         return "(" + super.toString() + " План лечения: " + (treatmentPlan != null ? treatmentPlan : "Отсутствует") + ")";
     }
+
 }
