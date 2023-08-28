@@ -20,7 +20,7 @@ public class L2Practice extends Runnable {
     @Override
     public void run() {
         double monthNumber = Math.floor(ConsoleUtil.getNumberInRange("Задача №1. Введите номер месяца: ", 1, 12));
-        ConsoleUtil.print(getMonthAndSeasonName(monthNumber));
+        ConsoleUtil.println(getMonthAndSeasonName(monthNumber));
 
         StringBuilder resultTask2 = new StringBuilder("Задача №2. ");
         int iterator = 0;
@@ -28,13 +28,13 @@ public class L2Practice extends Runnable {
             resultTask2.append(iterator).append(" ");
             iterator++;
         }
-        ConsoleUtil.print(resultTask2.toString());
+        ConsoleUtil.println(resultTask2.toString());
 
         StringBuilder resultTask3 = new StringBuilder("Задача №3. ");
         for (int i = 2; i <= 20; i += 2) {
             if (i > 10) resultTask3.append(i).append(" ");
         }
-        ConsoleUtil.print(resultTask3.toString());
+        ConsoleUtil.println(resultTask3.toString());
     }
 
     private String getMonthAndSeasonName(double seasonNumber) {

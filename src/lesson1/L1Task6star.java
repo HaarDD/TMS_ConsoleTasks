@@ -19,10 +19,10 @@ public class L1Task6star extends Runnable {
     public void run() {
         int a = (int) ConsoleUtil.getNumber("Число a: "),
                 b = (int) ConsoleUtil.getNumber("Число b ");
-        ConsoleUtil.print("До подмены: a = " + a + " b = " + b);
+        ConsoleUtil.println("До подмены: a = " + a + " b = " + b);
         int temp = a;
         a = b;
         b = temp;
-        ConsoleUtil.print("После подмены: a = " + a + " b = " + b);
+        ConsoleUtil.println("После подмены: a = " + a + " b = " + b);
     }
 }

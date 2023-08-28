@@ -2,6 +2,7 @@ package lesson4;
 
 import base.ConsoleUtil;
 import base.DataUtil;
+import base.Pair;
 import base.Runnable;
 
 import java.util.Arrays;
@@ -22,14 +23,13 @@ public class L4Practice3 extends Runnable {
 
     @Override
     public void run() {
-        double[] masDouble = new double[(int) ConsoleUtil.getNaturalNumber("Введите размер массива: ")];
-        ConsoleUtil.randomizeDoubleArray(masDouble, 5, 10, 2);
-        ConsoleUtil.print(Arrays.toString(masDouble));
+        double[] masDouble = ConsoleUtil.generateRandomDoubleArray((int) ConsoleUtil.getNaturalNumber("Введите размер массива: "), new Pair(5, 10), 2);
+        ConsoleUtil.println(Arrays.toString(masDouble));
         for (int i = 0; i < masDouble.length; i++) {
             if ((i + 1) % 2 == 0) masDouble[i] = DataUtil.unsafeRoundDouble(masDouble[i] * masDouble[i], 2);
         }
-        ConsoleUtil.print(Arrays.toString(masDouble));
-        ConsoleUtil.print(Arrays.toString(DataUtil.revertArray(masDouble)));
+        ConsoleUtil.println(Arrays.toString(masDouble));
+        ConsoleUtil.println(Arrays.toString(DataUtil.revertArray(masDouble)));
     }
 
 }

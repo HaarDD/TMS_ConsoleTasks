@@ -4,7 +4,7 @@ public class Pair {
     private final Number first;
     private final Number second;
 
-    Pair(Number from, Number second) {
+    public Pair(Number from, Number second) {
         this.first = from;
         this.second = second;
     }
@@ -17,6 +17,9 @@ public class Pair {
         return second;
     }
 
-
+    @Override
+    public String toString() {
+        return "[" + this.first + ", " + this.second + "]";
+    }
 }
 

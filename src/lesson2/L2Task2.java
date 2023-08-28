@@ -22,6 +22,6 @@ public class L2Task2 extends Runnable {
         } else {
             result += "Cold";
         }
-        ConsoleUtil.print(result);
+        ConsoleUtil.println(result);
     }
 }

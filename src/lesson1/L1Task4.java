@@ -15,6 +15,6 @@ public class L1Task4 extends Runnable {
     @Override
     public void run() {
         double fractionalNumber = ConsoleUtil.getNumber("Исходное число: ");
-        ConsoleUtil.print("Округленное число: " + Math.round(fractionalNumber));
+        ConsoleUtil.println("Округленное число: " + Math.round(fractionalNumber));
     }
 }

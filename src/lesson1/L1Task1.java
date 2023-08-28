@@ -14,6 +14,6 @@ public class L1Task1 extends Runnable {
     public void run() {
         Double b = ConsoleUtil.getNumber("Число b: "), c = ConsoleUtil.getNumber("Число c: ");
         double result = (4 * (b + c - 1) / 2);
-        ConsoleUtil.print("Результат: 4 * (" + b + " + " + c + " - 1) / 2 = " + result);
+        ConsoleUtil.println("Результат: 4 * (" + b + " + " + c + " - 1) / 2 = " + result);
     }
 }

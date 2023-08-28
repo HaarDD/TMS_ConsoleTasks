@@ -1,13 +1,21 @@
 package base;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.stream.DoubleStream;
 
 public class ConsoleUtil {
     //константы для определения типов ввода массива
+
+
+    public static final int DEFAULT_VALUE = 0;
     public static final int INPUT_ARR_RANDOM = 1;
     public static final int INPUT_ARR_MANUAL = 2;
     public static final int INPUT_ARR_RANDOM_MANUAL = 3;
 
+    public static final int MULTI_ARRAY_TYPE_JAGGED = 2;
+
+    public static final int MULTI_ARRAY_TYPE_USUAL = 1;
 
     //Функции получаения чисел из консоли с различными параметрами
     public static double getNumber(String comment) {
@@ -28,103 +36,200 @@ public class ConsoleUtil {
 
     //Основная функция получения числа из консоли
     private static double getNumber(String comment, boolean isNatural, double minValue, double maxValue) {
-        print(comment, true);
+        print(comment);
         Scanner scanner = new Scanner(System.in);
         boolean isDoubleInConsole = scanner.hasNextDouble();
         if (isDoubleInConsole) {
             double value = scanner.nextDouble();
             if (isNatural && value < 1) {
-                print("Это не натуральное число! Попробуйте еще раз");
+                println("Это не натуральное число! Попробуйте еще раз");
                 return getNumber(comment, isNatural, minValue, maxValue);
             } else if (!(value >= minValue && value <= maxValue)) {
-                print("Число не входит в допустимый диапазон! Попробуйте еще раз");
+                println("Число не входит в допустимый диапазон! Попробуйте еще раз");
                 return getNumber(comment, isNatural, minValue, maxValue);
             } else {
                 return value;
             }
         }
-        print("Ошибка ввода числа! Попробуйте еще раз");
+        println("Ошибка ввода числа! Попробуйте еще раз");
         return getNumber(comment, isNatural, minValue, maxValue);
 
     }
 
-    public static void print(Object text) {
+    public static void println(Object text) {
         System.out.println(text);
     }
 
-    public static void print(Object text, boolean isNotNewLine) {
-        if (isNotNewLine) System.out.print(text);
+    public static void println() {
+        System.out.println();
+    }
+
+    public static void print(Object text) {
+        System.out.print(text);
     }
 
     public static void printOption(int optionNumber, MenuOption option) {
-        print(optionNumber + ". " + option.getName());
+        println(optionNumber + ". " + option.getName());
     }
 
     public static void printLineDelimiter() {
-        print("--------------------------");
+        println("----------------------------------------------");
     }
 
     public static void printName(String name, String surname) {
-        print("Имя: " + name + "\tФамилия: " + surname);
+        println("Имя: " + name + "\tФамилия: " + surname);
     }
 
     public static void printNameWithAge(String name, String surname, int age) {
-        print("Имя: " + name + "\tФамилия: " + surname + "\tВозраст: " + age);
+        println("Имя: " + name + "\tФамилия: " + surname + "\tВозраст: " + age);
+    }
+
+    public static void printIntMatrix(int[][] array, int columnSpaces) {
+        for (int[] row : array) {
+            for (int cell : row) {
+                String value = Integer.toString(cell);
+                print(value + " ".repeat(Math.max(columnSpaces - value.length(), 0)) + " ");
+            }
+            println();
+        }
+    }
+
+    public static void printStringMatrix(String[][] array, int columnSpaces) {
+        for (String[] row : array) {
+            for (String cell : row) {
+                print(cell + " ".repeat(Math.max(columnSpaces - cell.length(), 0)) + " ");
+            }
+            println();
+        }
     }
 
     //Функции получения массива из консоли способом на выбор с различными параметрами
     public static double[] getDoubleArrayMenu() {
-        return getDoubleArrayMenuBase(0, -Double.MAX_VALUE, Double.MAX_VALUE);
+        return getDoubleArray(DEFAULT_VALUE, DEFAULT_VALUE, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE));
     }
 
     public static double[] getDoubleArrayMenu(double from, double to) {
-        return getDoubleArrayMenuBase(0, from, to);
+        return getDoubleArray(DEFAULT_VALUE, DEFAULT_VALUE, new Pair(from, to));
     }
 
-    public static double[] getDoubleArrayMenu(int arrayInputType, double from, double to) {
-        return getDoubleArrayMenuBase(arrayInputType, from, to);
+    public static double[] getDoubleArrayMenu(int defaultInputMethod, double from, double to) {
+        return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair(from, to));
     }
 
-    public static double[] getDoubleArrayMenu(int arrayInputType) {
-        return getDoubleArrayMenuBase(arrayInputType, -Double.MAX_VALUE, Double.MAX_VALUE);
+    public static double[] getDoubleArrayMenu(int defaultInputMethod) {
+        return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE));
     }
 
     //Основная функция получения массива способом на выбор. Параметр arrayInputType задает метод заполнения
     //Параметры from и to позволяют указать диапазон (значения -/+Double.MAX_VALUE считаются дефолтными)
-    private static double[] getDoubleArrayMenuBase(int arrayInputType, double from, double to) {
-        boolean isDefaultFrom = from == -Double.MAX_VALUE;
-        boolean isDefaultTo = to == Double.MAX_VALUE;
-        double randomFromDefault = isDefaultFrom ? 1 : from;
-        double randomToDefault = isDefaultTo ? 100 : to;
 
-        double[] arrDouble = new double[(int) ConsoleUtil.getNaturalNumber("Введите размер массива: ")];
-        int arrayInputTypeV = arrayInputType == 0 ? (int) getNumberInRange("Заполнение массива\n" + INPUT_ARR_RANDOM + " - случайные числа (от "
-                + randomFromDefault + " до " + randomToDefault + "),\n" + INPUT_ARR_MANUAL + " - ручной набор,"
-                + "\n" + INPUT_ARR_RANDOM_MANUAL + " - случайные числа в диапазоне\nВыберите: ", 1, 3) : arrayInputType;
+    private static double[] getDoubleArray(int defaultLength, int defaultInputMethod, Pair defaultRange) {
+        double from = (double) defaultRange.getFirst();
+        double to = (double) defaultRange.getSecond();
+
+        Pair randomExtremeRange = new Pair(from == -Double.MAX_VALUE ? 1 : from, to == Double.MAX_VALUE ? 100 : to);
+
+        int length = defaultLength == DEFAULT_VALUE ? (int) ConsoleUtil.getNumberInRange("Введите размер массива: ", 2, 100) : defaultLength;
+
+        int arrayInputTypeV = defaultInputMethod == DEFAULT_VALUE ? getArrayInputMethod(randomExtremeRange) : defaultInputMethod;
 
         switch (arrayInputTypeV) {
-            case INPUT_ARR_RANDOM -> randomizeDoubleArray(arrDouble, randomFromDefault, randomToDefault, 2);
-            case INPUT_ARR_MANUAL -> inputDoubleArray(arrDouble, from, to, 2);
-            case INPUT_ARR_RANDOM_MANUAL -> {
-                Pair range = getTrueRange(from, to);
-                randomizeDoubleArray(arrDouble, (double) range.getFirst(), (double) range.getSecond(), (int) getNumberInRange("Знаки после запятой: ", 0));
+            case INPUT_ARR_RANDOM -> {//ввод рандомом
+                return generateRandomDoubleArray(length, randomExtremeRange, 2);
+            }
+            case INPUT_ARR_MANUAL -> {//ввод вручную
+                return enterDoubleArray(length, from, to, 2);
+            }
+            case INPUT_ARR_RANDOM_MANUAL -> {//ввод контролируемым рандомом
+                Pair randomRange = getTrueRange(from, to);//ввод диапазона
+                return generateRandomDoubleArray(length, randomRange, (int) getNumberInRange("Знаки после запятой: ", 0));
+            }
+            default -> {
+                return new double[length];
             }
         }
+    }
+
+    private static int getArrayInputMethod(Pair randomExtremeRange) {
+        return (int) getNumberInRange("Заполнение массива\n" + INPUT_ARR_RANDOM + " - случайные числа (от "
+                + randomExtremeRange.getFirst() + " до " + randomExtremeRange.getSecond() + "),\n" + INPUT_ARR_MANUAL + " - ручной набор,"
+                + "\n" + INPUT_ARR_RANDOM_MANUAL + " - случайные числа в диапазоне\nВыберите: ", 1, 3);
+    }
+
+    //Функции получения массива из консоли способом на выбор с различными параметрами
+    public static Object[] getMultiArray() {
+        return getMultiArrayBase(DEFAULT_VALUE, DEFAULT_VALUE, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE), (int) ConsoleUtil.getNumberInRange("Введите уровень вложенности: ", 2));
+    }
+
+    public static Object[] getMultiArrayWithParameters(int defaultLength, int defaultInputMethod, Pair defaultRange, int nesting) {
+        return getMultiArrayBase(defaultLength, defaultInputMethod, defaultRange, nesting);
+    }
+
+
+    private static Object[] getMultiArrayBase(int defaultUsualMultiArrayLength, int defaultInputMethod, Pair defaultRange, int nesting) {
+        int length = defaultUsualMultiArrayLength == DEFAULT_VALUE ? (int) ConsoleUtil.getNumberInRange("Введите размер массива уровня " + nesting + ": ", 2, 100) : defaultUsualMultiArrayLength;
+
+        int trueInputMethod = defaultInputMethod;
+        if (trueInputMethod == DEFAULT_VALUE) {
+            int eachArraySameInputMethod = (int) getNumberInRange("""
+                    Выберите метод заполнения (
+                    1 - общий для всех массивов,
+                    2 - отдельный для каждого массива):\s""", 1, 2);
+            trueInputMethod = eachArraySameInputMethod == 1 ? getArrayInputMethod(defaultRange) : defaultInputMethod;
+        }
+
+        Object[] objectArray = new Object[length];
+        if (nesting == 1) {
+            objectArray = convertDoubleToObjectArray(getDoubleArray(length, defaultInputMethod, defaultRange));
+        } else {
+            println("Уровень " + (nesting - 1));
+            int multiArrayType = defaultUsualMultiArrayLength != DEFAULT_VALUE ? MULTI_ARRAY_TYPE_USUAL : getMultiArrayType();
+            if (multiArrayType == MULTI_ARRAY_TYPE_USUAL) {
+                for (int i = 0; i < objectArray.length; i++) {
+                    //print("Массив " + (i + 1));
+                    objectArray[i] = getMultiArrayBase(length, trueInputMethod, defaultRange, nesting - 1);
+                }
+            } else if (multiArrayType == MULTI_ARRAY_TYPE_JAGGED) {
+                for (int i = 0; i < objectArray.length; i++) {
+                    //print("Массив " + (i + 1));
+                    objectArray[i] = getMultiArrayBase(DEFAULT_VALUE, defaultInputMethod, defaultRange, nesting - 1);
+                }
+            }
+        }
+        return objectArray;
+    }
+
+    private static int getMultiArrayType() {
+        return (int) getNumberInRange("Выберите вид массивов (" + MULTI_ARRAY_TYPE_USUAL + " - ровный, "
+                + MULTI_ARRAY_TYPE_JAGGED + " - зубчатый): ", MULTI_ARRAY_TYPE_USUAL, MULTI_ARRAY_TYPE_JAGGED);
+    }
+
+
+    private static double[] arrayToDouble(Object[] array) {
+        return Arrays.stream(array).mapToDouble(value -> (Double) value).toArray();
+    }
+
+    public static Object[] convertDoubleToObjectArray(double[] doubleArray) {
+        return DoubleStream.of(doubleArray).boxed().toArray();
+    }
+
+    //Создает и заполняет массив из консоли для каждого числа
+    public static double[] enterDoubleArray(int length, double from, double to, int roundPlaces) {
+        double[] array = new double[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = DataUtil.unsafeRoundDouble(getNumberInRange("Введите число в диапазоне " + ((from == -Double.MAX_VALUE) ? "" : "от " + from)
+                    + ((to == Double.MAX_VALUE) ? "" : " до " + to) + ": ", from, to), roundPlaces);
+        }
+        return array;
+    }
+
+    //Создает и заполняет массив рандомом по заданному диапазону
+    public static double[] generateRandomDoubleArray(int length, Pair range, int roundPlaces) {
+        double[] arrDouble = new double[length];
+        for (int i = 0; i < arrDouble.length; i++) {
+            arrDouble[i] = DataUtil.getRandomDoubleRounded(range, roundPlaces);
+        }
         return arrDouble;
-    }
-
-    //Заполняет переданный массив вводом пользователя
-    public static void inputDoubleArray(double[] arrDouble, double from, double to, int roundPlaces) {
-        for (int i = 0; i < arrDouble.length; i++) {
-            arrDouble[i] = DataUtil.unsafeRoundDouble(getNumberInRange("Введите число в диапазоне от " + from + " до " + to + ": ", from, to), roundPlaces);
-        }
-    }
-
-    //Заполняет переданный массив рандомом по заданному диапазону
-    public static void randomizeDoubleArray(double[] arrDouble, double from, double to, int roundPlaces) {
-        for (int i = 0; i < arrDouble.length; i++) {
-            arrDouble[i] = DataUtil.getRandomDoubleRounded(from, to, roundPlaces);
-        }
     }
 
     //получение диапазона из консоли
@@ -141,7 +246,7 @@ public class ConsoleUtil {
     private static Pair getTrueRangeBase(double fromLimit, double toLimit) {
         Pair range = new Pair(getNumber("От: "), getNumber("До"));
         if ((double) range.getFirst() >= (double) range.getSecond() || (double) range.getFirst() < fromLimit || (double) range.getSecond() > toLimit) {
-            print("Введенный диапазон неправильный! Попробуйте ещё раз.");
+            println("Введенный диапазон неправильный! Попробуйте ещё раз.");
             return getTrueRange();
         } else return range;
     }

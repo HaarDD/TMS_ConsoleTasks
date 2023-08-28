@@ -18,6 +18,6 @@ public class L1Task2and3 extends Runnable {
     public void run() {
         int n = (int) ConsoleUtil.getNumber("Исходное число: ");
         int sum = String.valueOf(n).chars().filter(Character::isDigit).map(Character::getNumericValue).sum();
-        ConsoleUtil.print("Сумма цифр числа \"" + n + "\": " + sum);
+        ConsoleUtil.println("Сумма цифр числа \"" + n + "\": " + sum);
     }
 }

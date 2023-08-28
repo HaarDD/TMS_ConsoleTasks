@@ -16,6 +16,6 @@ public class L2Task3 extends Runnable {
         for (int i = 10; i <= 20; i++) {
             result.append(i).append("[").append(i * i).append("] ");
         }
-        ConsoleUtil.print(result.toString());
+        ConsoleUtil.println(result.toString());
     }
 }

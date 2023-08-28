@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /*Дополненительное задание - написать любой алгоритм сортировки сложнее пузырька
-Был выбрал алгоритм сортировки деревом
+Был выбран алгоритм сортировки деревом
 Использован материал: ru.wikipedia.org/wiki/Двоичное_дерево_поиска */
 public class L4Task6Tree extends Runnable {
 
@@ -27,7 +27,7 @@ public class L4Task6Tree extends Runnable {
         tree.insert(new Tree(-15));
         tree.insert(new Tree(16));
         tree.traverseAscending(new Tree.AddToSortedList(list));
-        ConsoleUtil.print("Проход с сортировкой: " + Arrays.toString(list.toArray()));
+        ConsoleUtil.println("Проход с сортировкой: " + Arrays.toString(list.toArray()));
     }
 
 }

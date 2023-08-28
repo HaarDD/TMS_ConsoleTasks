@@ -18,8 +18,8 @@ public class L4Task4 extends Runnable {
     @Override
     public void run() {
         double[] values = ConsoleUtil.getDoubleArrayMenu();
-        ConsoleUtil.print(Arrays.toString(values));
-        ConsoleUtil.print(Arrays.toString(DataUtil.revertArray(values)));
+        ConsoleUtil.println(Arrays.toString(values));
+        ConsoleUtil.println(Arrays.toString(DataUtil.revertArray(values)));
     }
 
 }

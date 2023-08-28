@@ -14,6 +14,6 @@ public class L2Task1 extends Runnable {
 
     @Override
     public void run() {
-        ConsoleUtil.print((int) ConsoleUtil.getNumber("Введите число: ") % 2 == 0 ? "Число четное" : "Число нечетное");
+        ConsoleUtil.println((int) ConsoleUtil.getNumber("Введите число: ") % 2 == 0 ? "Число четное" : "Число нечетное");
     }
 }

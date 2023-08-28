@@ -26,7 +26,7 @@ public class L4Task5 extends Runnable {
         final int STRING_METHOD = 1;
         final int LOG_METHOD = 2;
 
-        ConsoleUtil.print("Примечание: все 0 в начале массива будут удалены");
+        ConsoleUtil.println("Примечание: все 0 в начале массива будут удалены");
         int[] array = Arrays.stream(ConsoleUtil.getDoubleArrayMenu(ConsoleUtil.INPUT_ARR_MANUAL, 0, 9)).mapToInt(value -> (int) value).toArray();
 
         int zerosFromStart = 0;
@@ -38,14 +38,14 @@ public class L4Task5 extends Runnable {
         array = Arrays.copyOfRange(array, zerosFromStart, array.length);
 
         if (array.length == 0) {
-            ConsoleUtil.print("Массив пустой.");
+            ConsoleUtil.println("Массив пустой.");
             return;
         }
 
         int method = (int) ConsoleUtil.getNumberInRange("Выберите метод (" + STRING_METHOD + "  - через String," +
                 " " + LOG_METHOD + " - деление/умножение): ", STRING_METHOD, LOG_METHOD);
 
-        ConsoleUtil.print(Arrays.toString(array));
+        ConsoleUtil.println(Arrays.toString(array));
 
         switch (method) {
             case STRING_METHOD -> {
@@ -55,7 +55,7 @@ public class L4Task5 extends Runnable {
                 }
                 int value = Integer.parseInt(valueText.toString()) + 1;
                 int[] newArrayS = new StringBuilder(String.valueOf(value)).chars().map(digit -> digit - (int) '0').toArray();
-                ConsoleUtil.print(Arrays.toString(newArrayS));
+                ConsoleUtil.println(Arrays.toString(newArrayS));
             }
             case LOG_METHOD -> {
                 int number = 0;
@@ -69,7 +69,7 @@ public class L4Task5 extends Runnable {
                     newArrayD[i] = number % 10;
                     number /= 10;
                 }
-                ConsoleUtil.print(Arrays.toString(newArrayD));
+                ConsoleUtil.println(Arrays.toString(newArrayD));
             }
 
         }
