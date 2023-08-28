@@ -10,6 +10,9 @@ import lesson6.L6Task1;
 import lesson6.L6Task2;
 import lesson7.L7Task1;
 import lesson7.L7Task2;
+import lesson8.L8Task1;
+import lesson8.L8Task2;
+import lesson8.L8Task3;
 
 public class Main {
     //Выполнил Максим Галицкий
@@ -29,6 +32,8 @@ public class Main {
                 new Runnable[]{new L6Task1(), new L6Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("ООП в Java. Принципы",
                 new Runnable[]{new L7Task1(), new L7Task2()}));
+        tasksSwitcher.addLesson(new RunnableContainer("ООП в Java. Интерфейсы и абстрактные классы",
+                new Runnable[]{new L8Task1(), new L8Task2(), new L8Task3()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
