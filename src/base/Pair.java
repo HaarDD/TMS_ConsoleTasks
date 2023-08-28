@@ -1,11 +1,11 @@
 package base;
 
 public class Pair {
-    private final Number first;
-    private final Number second;
+    private Number first;
+    private Number second;
 
-    public Pair(Number from, Number second) {
-        this.first = from;
+    public Pair(Number first, Number second) {
+        this.first = first;
         this.second = second;
     }
 

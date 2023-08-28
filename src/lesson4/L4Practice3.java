@@ -29,7 +29,7 @@ public class L4Practice3 extends Runnable {
             if ((i + 1) % 2 == 0) masDouble[i] = DataUtil.unsafeRoundDouble(masDouble[i] * masDouble[i], 2);
         }
         ConsoleUtil.println(Arrays.toString(masDouble));
-        ConsoleUtil.println(Arrays.toString(DataUtil.revertArray(masDouble)));
+        ConsoleUtil.println(Arrays.toString(DataUtil.reverseArray(masDouble)));
     }
 
 }
