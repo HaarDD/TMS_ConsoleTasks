@@ -8,6 +8,7 @@ public class Rabbit extends Animal {
         super(animalName, "Трава");
     }
 
+    @Override
     public void voice() {
         ConsoleUtil.println("Кролик по имени " + this.getName() + " пищит");
     }
