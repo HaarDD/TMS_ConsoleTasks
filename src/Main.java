@@ -5,6 +5,7 @@ import lesson1.*;
 import lesson10.L10Task1;
 import lesson10.L10Task2;
 import lesson10.L10Task3;
+import lesson10.L10Task4;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -42,7 +43,7 @@ public class Main {
         tasksSwitcher.addLesson(new RunnableContainer("ООП в Java. Полиморфизм и статические методы",
                 new Runnable[]{new L9Task1(), new L9Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("Обработка строк",
-                new Runnable[]{new L10Task1(), new L10Task2(), new L10Task3()}));
+                new Runnable[]{new L10Task1(), new L10Task2(), new L10Task3(), new L10Task4()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
