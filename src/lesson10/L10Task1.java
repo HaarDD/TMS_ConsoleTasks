@@ -31,7 +31,7 @@ yyy/yyy/y/y в нижнем регистре.
 public class L10Task1 extends Runnable {
 
     public L10Task1() {
-        super("Проверка номера документа формата xxxx-yyy-xxxx-yyy-xyxy");
+        super("Проверка номера документа формата xxxx-yyy-xxxx-yyy-xyxy и др.");
     }
 
     @Override
