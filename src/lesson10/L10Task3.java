@@ -45,5 +45,11 @@ public class L10Task3 extends Runnable {
         return uniqueChars.size();
     }
 
-
+    public boolean checkUniqueWord(String word) {
+        HashSet<Character> uniqueChars = new HashSet<>();
+        for (char character : word.toCharArray()) {
+            if (!uniqueChars.add(character)) return false;
+        }
+        return true;
+    }
 }
