@@ -2,6 +2,7 @@ import base.Runnable;
 import base.RunnableContainer;
 import base.TasksSwitcher;
 import lesson1.*;
+import lesson10.L10Task1;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -38,6 +39,8 @@ public class Main {
                 new Runnable[]{new L8Task1(), new L8Task2(), new L8Task3()}));
         tasksSwitcher.addLesson(new RunnableContainer("ООП в Java. Полиморфизм и статические методы",
                 new Runnable[]{new L9Task1(), new L9Task2()}));
+        tasksSwitcher.addLesson(new RunnableContainer("Обработка строк",
+                new Runnable[]{new L10Task1()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
