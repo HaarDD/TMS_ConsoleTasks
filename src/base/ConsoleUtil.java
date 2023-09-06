@@ -36,24 +36,41 @@ public class ConsoleUtil {
 
     //Основная функция получения числа из консоли
     private static double getNumber(String comment, boolean isNatural, double minValue, double maxValue) {
-        print(comment);
         Scanner scanner = new Scanner(System.in);
-        boolean isDoubleInConsole = scanner.hasNextDouble();
-        if (isDoubleInConsole) {
-            double value = scanner.nextDouble();
-            if (isNatural && value < 1) {
-                println("Это не натуральное число! Попробуйте еще раз");
-                return getNumber(comment, isNatural, minValue, maxValue);
-            } else if (!(value >= minValue && value <= maxValue)) {
-                println("Число не входит в допустимый диапазон! Попробуйте еще раз");
-                return getNumber(comment, isNatural, minValue, maxValue);
+        while (true) {
+            print(comment);
+            boolean isDoubleInConsole = scanner.hasNextDouble();
+            if (isDoubleInConsole) {
+                double value = scanner.nextDouble();
+                if (isNatural && value < 1) {
+                    println("Это не натуральное число! Попробуйте еще раз");
+                } else if (!(value >= minValue && value <= maxValue)) {
+                    println("Число не входит в допустимый диапазон! Попробуйте еще раз");
+                } else {
+                    return value;
+                }
             } else {
-                return value;
+                println("Ошибка ввода числа! Попробуйте еще раз");
+                scanner.nextLine();
             }
         }
-        println("Ошибка ввода числа! Попробуйте еще раз");
-        return getNumber(comment, isNatural, minValue, maxValue);
+    }
 
+    public static String getString(String comment) {
+        print(comment);
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    public static String getString(String comment, StringValidator validator) {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            print(comment);
+            String line = scanner.nextLine();
+            boolean isValidString = validator.validate(line);
+            if (isValidString) return line;
+            println("Данная строка не подходит по условиям! Попробуйте еще раз");
+        }
     }
 
     public static void println(Object text) {
@@ -120,9 +137,6 @@ public class ConsoleUtil {
         return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE));
     }
 
-    //Основная функция получения массива способом на выбор. Параметр arrayInputType задает метод заполнения
-    //Параметры from и to позволяют указать диапазон (значения -/+Double.MAX_VALUE считаются дефолтными)
-
     private static double[] getDoubleArray(int defaultLength, int defaultInputMethod, Pair defaultRange) {
         double from = (double) defaultRange.getFirst();
         double to = (double) defaultRange.getSecond();
@@ -149,6 +163,9 @@ public class ConsoleUtil {
             }
         }
     }
+
+    //Основная функция получения массива способом на выбор. Параметр arrayInputType задает метод заполнения
+    //Параметры from и to позволяют указать диапазон (значения -/+Double.MAX_VALUE считаются дефолтными)
 
     private static int getArrayInputMethod(Pair randomExtremeRange) {
         return (int) getNumberInRange("Заполнение массива\n" + INPUT_ARR_RANDOM + " - случайные числа (от "
@@ -201,7 +218,6 @@ public class ConsoleUtil {
                 + MULTI_ARRAY_TYPE_JAGGED + " - зубчатый): ", MULTI_ARRAY_TYPE_USUAL, MULTI_ARRAY_TYPE_JAGGED);
     }
 
-
     private static double[] arrayToDouble(Object[] array) {
         return Arrays.stream(array).mapToDouble(value -> (Double) value).toArray();
     }
@@ -247,5 +263,11 @@ public class ConsoleUtil {
             return getTrueRange();
         } else return range;
     }
+
+    public static interface StringValidator {
+        boolean validate(String inputString);
+
+    }
+
 
 }
