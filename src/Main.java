@@ -3,6 +3,8 @@ import base.RunnableContainer;
 import base.TasksSwitcher;
 import lesson1.*;
 import lesson10.*;
+import lesson11.L11Task1;
+import lesson11.L11Task2;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -41,6 +43,8 @@ public class Main {
                 new Runnable[]{new L9Task1(), new L9Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("Обработка строк",
                 new Runnable[]{new L10Task1(), new L10Task2(), new L10Task3(), new L10Task4(), new L10Task5()}));
+        tasksSwitcher.addLesson(new RunnableContainer("Исключения и ошибки",
+                new Runnable[]{new L11Task1(), new L11Task2()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
