@@ -3,10 +3,13 @@ import base.RunnableContainer;
 import base.TasksSwitcher;
 import lesson1.*;
 import lesson10.*;
-import lesson12.L12Task1;
-import lesson12.L12Task2;
 import lesson11.L11Task1;
 import lesson11.L11Task2;
+import lesson12.L12Task1;
+import lesson12.L12Task2;
+import lesson14_extended.BracesTaskMethodDeque;
+import lesson14_extended.BracesTaskMethodNonDeque;
+import lesson14_extended.university.University;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -49,6 +52,9 @@ public class Main {
                 new Runnable[]{new L11Task1(), new L11Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("Файлы, потоки ввода/вывода",
                 new Runnable[]{new L12Task1(), new L12Task2()}));
+
+        tasksSwitcher.addLesson(new RunnableContainer("Дополнительные задания",
+                new Runnable[]{new BracesTaskMethodNonDeque(), new BracesTaskMethodDeque(), new University()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
