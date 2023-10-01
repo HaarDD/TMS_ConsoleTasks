@@ -7,13 +7,14 @@ import lesson11.L11Task1;
 import lesson11.L11Task2;
 import lesson12.L12Task1;
 import lesson12.L12Task2;
-import lesson14_extended.BracesTaskMethodDeque;
-import lesson14_extended.BracesTaskMethodNonDeque;
-import lesson14_extended.university.University;
 import lesson13.L13Task1;
 import lesson13.L13Task2;
 import lesson13.L13Task3;
 import lesson13.L13Task4;
+import lesson14_extended.BracesTaskMethodDeque;
+import lesson14_extended.BracesTaskMethodNonDeque;
+import lesson14_extended.university.University;
+import lesson15.*;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -60,6 +61,8 @@ public class Main {
                 new Runnable[]{new L13Task1(), new L13Task2(), new L13Task3(), new L13Task4()}));
         tasksSwitcher.addLesson(new RunnableContainer("Дополнительные задания",
                 new Runnable[]{new BracesTaskMethodNonDeque(), new BracesTaskMethodDeque(), new University()}));
+        tasksSwitcher.addLesson(new RunnableContainer("Особенности работы с Java 8 (Data/Time API, лямбды)",
+                new Runnable[]{new L15Task1(), new L15Task2(), new L15Task3(), new L15Task4(), new L15Task5()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
