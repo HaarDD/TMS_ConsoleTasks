@@ -16,6 +16,9 @@ import lesson14_extended.BracesTaskMethodNonDeque;
 import lesson14_extended.university.University;
 import lesson15.*;
 import lesson16.*;
+import lesson17.L17PracticesAll;
+import lesson17.L17Task1;
+import lesson17.L17Task2;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -66,6 +69,8 @@ public class Main {
                 new Runnable[]{new L15Task1(), new L15Task2(), new L15Task3(), new L15Task4(), new L15Task5()}));
         tasksSwitcher.addLesson(new RunnableContainer("Особенности работы с Java 8 (Optional, Stream API)",
                 new Runnable[]{new L16Practice1(), new L16Practice2(), new L16Practice3(), new L16Task1(), new L16Task2()}));
+        tasksSwitcher.addLesson(new RunnableContainer("Регулярные выражения",
+                new Runnable[]{new L17PracticesAll(), new L17Task1(), new L17Task2()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
