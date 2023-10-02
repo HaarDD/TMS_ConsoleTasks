@@ -1,19 +1,19 @@
 package base;
 
-public class Pair {
-    private Number first;
-    private Number second;
+public class Pair<T, V> {
+    private T first;
+    private V second;
 
-    public Pair(Number first, Number second) {
+    public Pair(T first, V second) {
         this.first = first;
         this.second = second;
     }
 
-    public Number getFirst() {
+    public T getFirst() {
         return first;
     }
 
-    public Number getSecond() {
+    public V getSecond() {
         return second;
     }
 
