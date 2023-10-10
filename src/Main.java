@@ -20,6 +20,7 @@ import lesson17.L17PracticesAll;
 import lesson17.L17Task1;
 import lesson17.L17Task2;
 import lesson18.L18Task1;
+import lesson18.L18Task2;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -72,8 +73,8 @@ public class Main {
                 new Runnable[]{new L16Practice1(), new L16Practice2(), new L16Practice3(), new L16Task1(), new L16Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("Регулярные выражения",
                 new Runnable[]{new L17PracticesAll(), new L17Task1(), new L17Task2()}));
-        tasksSwitcher.addLesson(new RunnableContainer("Работа с xml (dom,sax,stax)",
-                new Runnable[]{new L18Task1()}));
+        tasksSwitcher.addLesson(new RunnableContainer("Работа с xml (dom,sax)",
+                new Runnable[]{new L18Task1(), new L18Task2()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
