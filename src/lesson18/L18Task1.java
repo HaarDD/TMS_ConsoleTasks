@@ -1,22 +1,16 @@
 package lesson18;
 
-import base.ConsoleUtil;
 import base.Runnable;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.w3c.dom.*;
-import org.xml.sax.SAXException;
+import lesson18.task2.FileTools;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /*Задача 1:
 Написать программу для парсинга xml документа. Необходимо распарсить xml документ и
@@ -30,78 +24,54 @@ public class L18Task1 extends Runnable {
 
     @Override
     public void run() {
-        String xmlFilePath = "src/lesson18/xmls/";
-        String txtFilePath = "src/lesson18/txts/";
+        String xmlFilePath = "src/lesson18/xml/";
+        String txtFilePath = "src/lesson18/txt/";
 
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
-            Document xmlDocument = builder.parse(new File(xmlFilePath + "task1.xml"));
+            try (BufferedReader xmlReader = new BufferedReader(new FileReader(xmlFilePath + "task1.xml"))) {
+                Document xmlDocument = builder.parse(new InputSource(xmlReader));
 
-            NodeList sonnetsNodeList = xmlDocument.getElementsByTagName("sonnet");
+                NodeList sonnetsNodeList = xmlDocument.getElementsByTagName("sonnet");
 
-            StringBuilder txtFileData = new StringBuilder();
+                for (int i = 0; i < sonnetsNodeList.getLength(); i++) {
+                    Element currentSonnetElement = (Element) sonnetsNodeList.item(i);
 
-            StringBuilder fileName = new StringBuilder();
+                    String sonnetType = currentSonnetElement.getAttribute("type");
+                    String firstName = currentSonnetElement.getElementsByTagName("firstName").item(0).getTextContent();
+                    String lastName = currentSonnetElement.getElementsByTagName("lastName").item(0).getTextContent();
+                    String title = currentSonnetElement.getElementsByTagName("title").item(0).getTextContent();
 
-            for (int i = 0; i < sonnetsNodeList.getLength(); i++) {
-                txtFileData.append("---New sonnet---\n");
+                    String fileName = firstName + '_' + lastName + '_' + title + ".txt";
 
-                Element currentSonnetElement = (Element) sonnetsNodeList.item(i);
+                    StringBuilder txtFileData = new StringBuilder();
+                    txtFileData.append("---New sonnet---\n")
+                            .append(sonnetType).append('\n')
+                            .append(firstName).append('\n')
+                            .append(lastName).append('\n')
+                            .append(title).append('\n');
 
-                String sonnetType = currentSonnetElement.getAttribute("type");
+                    NodeList linesNodeList = currentSonnetElement.getElementsByTagName("line");
 
-                String firstName = currentSonnetElement.getElementsByTagName("firstName").item(0).getTextContent();
-                String lastName = currentSonnetElement.getElementsByTagName("lastName").item(0).getTextContent();
-                String title = currentSonnetElement.getElementsByTagName("title").item(0).getTextContent();
+                    txtFileData.append("--Lines--\n");
 
-                fileName.append(firstName).append('_').append(lastName).append('_').append(title).append(".txt");
+                    for (int j = 0; j < linesNodeList.getLength(); j++) {
+                        Element currentLineElement = (Element) linesNodeList.item(j);
+                        String currentLineText = currentLineElement.getTextContent();
 
-                txtFileData.append(sonnetType).append('\n').append(firstName).append('\n').append(lastName).append('\n').append(title).append('\n');
+                        txtFileData.append(currentLineText).append('\n');
+                    }
 
-                NodeList linesNodeList = currentSonnetElement.getElementsByTagName("line");
-
-                txtFileData.append("--Lines--\n");
-
-                for (int j = 0; j < linesNodeList.getLength(); j++) {
-                    Element currentLineElement = (Element) linesNodeList.item(j);
-                    String currentLineText = currentLineElement.getTextContent();
-
-                    txtFileData.append(currentLineText).append('\n');
+                    FileTools.clearFiles(txtFilePath + fileName);
+                    FileTools.writeDataToFile(txtFilePath + fileName, txtFileData.toString());
                 }
-
             }
-
-            clearFiles(txtFilePath + fileName);
-
-            writeLineToFile(txtFilePath + fileName,txtFileData.toString());
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-    public void writeLineToFile(String filePath, String line) {
-        try (BufferedWriter output_file = new BufferedWriter(new FileWriter(filePath, true))) {
-            output_file.write(line);
-            output_file.newLine();
-        } catch (IOException e) {
-            ConsoleUtil.println("Не удалось записать строку в файл по пути \"" + filePath + "\"!");
-        }
-    }
-
-    public void clearFiles(String... filePath) {
-        for (String path : filePath) {
-            try {
-                FileWriter output_file = new FileWriter(path);
-                output_file.close();
-            } catch (IOException e) {
-                ConsoleUtil.println("Не удалось очистить файл по пути \"" + path + "\"!");
-            }
-        }
-    }
-
 
 
 }
