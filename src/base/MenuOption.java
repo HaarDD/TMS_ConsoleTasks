@@ -1,6 +1,6 @@
 package base;
 
-abstract class MenuOption {
+public class MenuOption {
     private final String name;
 
     public MenuOption(String name) {
