@@ -1,20 +1,20 @@
 package lesson2;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 /*Задача *:
 Напишите программу, где пользователь вводит любое целое положительное число. А
 программа суммирует все числа от 1 до введенного пользователем числа. Для ввода
 числа воспользуйтесь классом Scanner. Сделать проверку, чтобы пользователь не мог
 ввести некорректные данные.*/
-public class L2Task5star extends Runnable {
+public class L2Task5star extends TaskRunnable {
     public L2Task5star() {
         super("*Сумма от 1 до введенного положительного числа");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         int value = (int) ConsoleUtil.getNaturalNumber("Введите целое положительное число: ");
         int result = 0;
         StringBuilder steps = new StringBuilder();

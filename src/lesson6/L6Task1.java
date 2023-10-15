@@ -1,7 +1,7 @@
 package lesson6;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 /*Задача 1:
 Создать класс CreditCard c полями номер счета, текущая сумма на счету. Добавьте
@@ -11,14 +11,14 @@ import base.Runnable;
 объекта класса CreditCard у которых заданы номер счета и начальная сумма.
 Тестовый сценарий для проверки: Положите деньги на первые две карточки и снимите с
 третьей. Выведите на экран текущее состояние всех трех карточек.*/
-public class L6Task1 extends Runnable {
+public class L6Task1 extends TaskRunnable {
 
     public L6Task1() {
         super("Класс CreditCard");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         CreditCard creditCard1 = new CreditCard("Иванов Иван", 5364566891011213L, 1000);
         CreditCard creditCard2 = new CreditCard("Сергеев Сергей", 1225567691051253L, 2000);
         CreditCard creditCard3 = new CreditCard(1234567891011213L, 3000);

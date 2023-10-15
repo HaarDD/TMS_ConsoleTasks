@@ -2,7 +2,7 @@ package lesson17;
 
 import base.ConsoleUtil;
 import base.Pair;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 5. В строке “Hello \n world \n !!!” заменить \n на “” используя классы Pattern и Matcher.
 6. В строке “Всем привет!! Меня зовут Билл Гейтс и я мечтаю учиться в TeachMeSkills!”
 найти имя и фамилию человека и вывести на экран!*/
-public class L17PracticesAll extends Runnable {
+public class L17PracticesAll extends TaskRunnable {
 
     public static final Pattern regexAllNumbers = Pattern.compile("(\\d+|\\d+.\\d+)");
     public static final Pattern regexAllLetters = Pattern.compile("(\\p{L})");
@@ -34,7 +34,7 @@ public class L17PracticesAll extends Runnable {
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String regexTestCase1 = "Today my 17th lesson. I’m the best 1! Find me in inst: @teachmeskills";
         ConsoleUtil.println("Исходная строка: " + regexTestCase1);
         ConsoleUtil.println("Найденные числа: " + Arrays.toString(matchAllNumbers(regexTestCase1).toArray()));

@@ -1,7 +1,7 @@
 package lesson2;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
         /*Задача 1:
         Ввести с консоли любое число от 1 до 12. В зависимости от введённого числа вывести в
@@ -12,13 +12,13 @@ import base.Runnable;
         Задача 3:
         Используя for вывести каждое четное число от 2 до 20 включительно и больше 10.*/
 
-public class L2Practice extends Runnable {
+public class L2Practice extends TaskRunnable {
     public L2Practice() {
         super("Практика. Вывод поры года по номеру, вывод чисел через while (от 0 до 25), вывод чисел через for (четные от 2 до 20 и больше 10)");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         double monthNumber = Math.floor(ConsoleUtil.getNumberInRange("Задача №1. Введите номер месяца: ", 1, 12));
         ConsoleUtil.println(getMonthAndSeasonName(monthNumber));
 

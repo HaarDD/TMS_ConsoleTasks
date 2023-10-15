@@ -1,7 +1,7 @@
 package lesson9;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson9.task2.Dog;
 
 import java.lang.reflect.Constructor;
@@ -13,14 +13,14 @@ import java.lang.reflect.InvocationTargetException;
 классах; Найти способ вызывать методы voice(), eat() класса Dog, который позволит
 обойти ограничение, наложенное конструктором выше. Объяснить, как работают оба
 способа*/
-public class L9Task2 extends Runnable {
+public class L9Task2 extends TaskRunnable {
 
     public L9Task2() {
         super("Вызов методов объекта при условии приватного конструктора класса");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         //метод 1
         ConsoleUtil.println("Метод 1 - доступ к статическому конструктору реализован через singleton");
         Dog dog1 = Dog.getDogInstance();

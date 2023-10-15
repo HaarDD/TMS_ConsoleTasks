@@ -1,6 +1,6 @@
 package lesson18;
 
-import base.Runnable;
+import base.TaskRunnable;
 import lesson18.task2.FileTools;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -16,14 +16,14 @@ import java.io.FileReader;
 Написать программу для парсинга xml документа. Необходимо распарсить xml документ и
 содержимое тегов line записать в другой документ. Название файла для записи должно
 состоять из значений тегов и имеет вид: <firstName>_<lastName>_<title>.txt*/
-public class L18Task1 extends Runnable {
+public class L18Task1 extends TaskRunnable {
 
     public L18Task1() {
         super("Извлечение данных из xml с последующей записью в файл");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String xmlFilePath = "src/lesson18/xml/";
         String txtFilePath = "src/lesson18/txt/";
 

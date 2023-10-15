@@ -1,7 +1,7 @@
 package lesson1;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 /*Задача 6*. Написать программу которая будет менять местами значение целочисленных
         переменных. Пример:
@@ -9,14 +9,14 @@ import base.Runnable;
 //код (ваше решение)
         sout(a); //выведет 2
         sout(b); //выведет 1*/
-public class L1Task6star extends Runnable {
+public class L1Task6star extends TaskRunnable {
 
     public L1Task6star() {
         super("Подмена содержимого переменных типа int");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         int a = (int) ConsoleUtil.getNumber("Число a: "),
                 b = (int) ConsoleUtil.getNumber("Число b ");
         ConsoleUtil.println("До подмены: a = " + a + " b = " + b);

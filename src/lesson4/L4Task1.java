@@ -2,7 +2,7 @@ package lesson4;
 
 import base.ConsoleUtil;
 import base.DataUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.Arrays;
 
@@ -13,15 +13,15 @@ import java.util.Arrays;
 данными, решить для него следующие задачи:
 Задача 1:
 Пройти по массиву, вывести все элементы в прямом и в обратном порядке.*/
-public class L4Task1 extends Runnable {
+public class L4Task1 extends TaskRunnable {
 
     public L4Task1() {
         super("Проход по массиву, вывод всех элементов в прямом и в обратном порядке.");
     }
 
     @Override
-    public void run() {
-        double[] array = ConsoleUtil.getDoubleArrayMenu();
+    public void runTask() {
+        Double[] array = ConsoleUtil.getDoubleArrayMenu();
         ConsoleUtil.println("Массив в прямом порядке:\t\t" + Arrays.toString(array));
         ConsoleUtil.println("Массив в обратном порядке:\t" + Arrays.toString(DataUtil.reverseArray(array)));
     }

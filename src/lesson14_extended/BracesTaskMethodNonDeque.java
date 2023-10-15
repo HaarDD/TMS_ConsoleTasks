@@ -1,7 +1,7 @@
 package lesson14_extended;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +10,14 @@ import java.util.Map;
 /*Задача 1:
 В задании приложен файл Ромео и Джульетта на английском, вычитать его в приложении.
 Проанализировать и записать в другой файл самое длинное слово.*/
-public class BracesTaskMethodNonDeque extends Runnable {
+public class BracesTaskMethodNonDeque extends TaskRunnable {
 
     public BracesTaskMethodNonDeque() {
         super("Правильность вложенности скобок разных видов в строку без Deque");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         Map<Character, Character> braces = new HashMap<>();
         braces.put('(', ')');
         braces.put('<', '>');

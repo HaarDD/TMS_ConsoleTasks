@@ -1,7 +1,7 @@
 package lesson8;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson8.task2.*;
 
 /*Задача 2:
@@ -9,14 +9,14 @@ import lesson8.task2.*;
 функцию подсчета площади для каждого типа фигуры и подсчет периметра(используя
 абстрактный класс/методы). Создать массив из 5 разных фигур. Вывести на экран сумму
 периметра всех фигур в массиве.*/
-public class L8Task2 extends Runnable {
+public class L8Task2 extends TaskRunnable {
 
     public L8Task2() {
         super("Иерархия классов \"Фигура\", \"Треугольник\", \"Прямоугольник\", \"Круг\", \"Трапеция\"");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         Shape[] shapes = new Shape[]{
                 new Triangle(1, 2, 2),
                 new Rectangle(3, 5),

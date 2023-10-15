@@ -1,7 +1,7 @@
 package lesson15;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.function.Function;
 import java.util.regex.Matcher;
@@ -11,14 +11,14 @@ import java.util.regex.Pattern;
 Используя Function реализовать лямбду, которая будет принимать в себя строку в
 формате “*сумма* BYN”(через пробел, вместо *сумма* вставить любое значение), а
 возвращать сумму, переведенную сразу в доллары.*/
-public class L15Task3 extends Runnable {
+public class L15Task3 extends TaskRunnable {
 
     public L15Task3() {
         super("(*сумма* BYN) в доллары через Function");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         final double dollarExchangeRate = 3.3d;
 
         Pattern bynPattern = Pattern.compile("^(\\d+|\\d+.\\d+) BYN");

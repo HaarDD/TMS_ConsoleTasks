@@ -1,7 +1,7 @@
 package lesson12;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,14 +22,14 @@ contract(далее любая последовательность букв/ц�
 номера документов следует записать в один файл-отчет. Невалидные номера документов
 следует записать в другой файл-отчет, но после номеров документов следует добавить
 информацию о том, почему этот документ не валиден.*/
-public class L12Task2 extends Runnable {
+public class L12Task2 extends TaskRunnable {
 
     public L12Task2() {
         super("Запись результатов валидации в отдельные файлы номеров документа из файла");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String documentNumbersFile = "src/lesson12/task2/document_numbers";
         String validDocumentNumbersFile = "src/lesson12/task2/valid_document_numbers";
         String invalidDocumentNumbersFile = "src/lesson12/task2/invalid_document_numbers";

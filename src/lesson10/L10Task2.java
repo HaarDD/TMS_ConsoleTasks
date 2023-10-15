@@ -1,7 +1,7 @@
 package lesson10;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +12,14 @@ import java.util.List;
 Найти самое короткое слово в строке и вывести его на экран.
 Найти самое длинное слово в строке и вывести его на экран.
 Если таких слов несколько, то вывести последнее из них.*/
-public class L10Task2 extends Runnable {
+public class L10Task2 extends TaskRunnable {
 
     public L10Task2() {
         super("Нахождение минимальных слов и максимальных");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String text = "cat dog horse whale bear tiger";
         String[] words = text.split(" ");
 

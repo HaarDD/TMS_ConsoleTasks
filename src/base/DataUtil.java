@@ -44,10 +44,10 @@ public class DataUtil {
         return Math.round(value * scale) / scale;
     }
 
-    public static double[] reverseArray(double[] array) {
+    public static Object[] reverseArray(Object[] array) {
         int length = array.length;
         for (int i = 0; i < length / 2; i++) {
-            double temp = array[i];
+            Object temp = array[i];
             array[i] = array[length - 1 - i];
             array[length - 1 - i] = temp;
         }

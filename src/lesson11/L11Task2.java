@@ -1,18 +1,18 @@
 package lesson11;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 
 /**/
-public class L11Task2 extends Runnable {
+public class L11Task2 extends TaskRunnable {
 
     public L11Task2() {
         super("Невыполнение finally");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         int param = (int) ConsoleUtil.getNumberInRange("Введите, каким образом будет завершена программа:\n1 - бесконечный цикл\n2 - вызов System.exit\n", 1, 3);
 
         try {

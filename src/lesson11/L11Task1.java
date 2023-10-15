@@ -1,7 +1,7 @@
 package lesson11;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson11.task1.Authorization;
 import lesson11.task1.WrongLoginException;
 import lesson11.task1.WrongPasswordException;
@@ -19,14 +19,14 @@ WrongPasswordException. WrongPasswordException и WrongLoginException -
 пользовательские классы исключения с двумя конструкторами – один по умолчанию,
 второй принимает сообщение исключения и передает его в конструктор класса Exception.
 Метод возвращает true, если значения верны, false в противном случае.*/
-public class L11Task1 extends Runnable {
+public class L11Task1 extends TaskRunnable {
 
     public L11Task1() {
         super("Проверка логина и пароля, выброс исключения");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         try {
             Authorization.SignUp("User", "password", "password");
         } catch (WrongLoginException | WrongPasswordException e) {

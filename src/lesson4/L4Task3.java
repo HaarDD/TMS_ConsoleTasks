@@ -1,7 +1,7 @@
 package lesson4;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,15 +10,15 @@ import java.util.List;
 /*Задача 4:
 Найти и вывести количество нулевых элементов. Если нулевых элементов нет - вывести
 сообщение, что их нет.*/
-public class L4Task3 extends Runnable {
+public class L4Task3 extends TaskRunnable {
 
     public L4Task3() {
         super("Нахождение нулевых элементов");
     }
 
     @Override
-    public void run() {
-        double[] array = ConsoleUtil.getDoubleArrayMenu();
+    public void runTask() {
+        Double[] array = ConsoleUtil.getDoubleArrayMenu();
         List<Integer> zeroValues = new ArrayList<>();
 
         for (int i = 0; i < array.length; i++) {

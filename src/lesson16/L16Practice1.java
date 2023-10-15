@@ -3,7 +3,7 @@ package lesson16;
 import base.ConsoleUtil;
 import base.DataUtil;
 import base.Pair;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson16.practice1.User;
 
 import java.util.Optional;
@@ -14,14 +14,14 @@ import java.util.Optional;
 знаем лежит там объект или отсутствует. Написать логику, которая будет выводить имя
 пользователя если объект присутствует в user, либо ‘DEFAULT’ в противном случае.
 Использовать класс Optional.*/
-public class L16Practice1 extends Runnable {
+public class L16Practice1 extends TaskRunnable {
 
     public L16Practice1() {
         super("Вывод пользователя или DEFAULT, если не определен");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         Optional<User> userOptional = (int) DataUtil.getRandomDoubleRounded(new Pair(0d, 1d), 0) == 0 ? Optional.of(new User("Иван", "Иванов", "Иванович")) : Optional.empty();
         ConsoleUtil.println(userOptional.map(User::toString).orElse("DEFAULT"));
     }

@@ -1,7 +1,7 @@
 package lesson12;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.io.*;
 
@@ -9,14 +9,14 @@ import java.io.*;
 /*Задача 1:
 В задании приложен файл Ромео и Джульетта на английском, вычитать его в приложении.
 Проанализировать и записать в другой файл самое длинное слово.*/
-public class L12Task1 extends Runnable {
+public class L12Task1 extends TaskRunnable {
 
     public L12Task1() {
         super("Нахождение самого длинного слова в файле romeo_und_julia и запись в файл longest_word");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String romeoUndJuliaFile = "src/lesson12/task1/romeo_und_julia";
         String longestWordFile = "src/lesson12/task1/longest_word";
 

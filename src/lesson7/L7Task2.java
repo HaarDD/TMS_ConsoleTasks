@@ -1,7 +1,7 @@
 package lesson7;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.lang.reflect.Field;
 
@@ -11,14 +11,14 @@ import java.lang.reflect.Field;
 используя сеттеры изменить значение поля color.
 
 Источник: https://javarush.com/groups/posts/513-reflection-api-refleksija-temnaja-storona-java*/
-public class L7Task2 extends Runnable {
+public class L7Task2 extends TaskRunnable {
 
     public L7Task2() {
         super("Изменение приватного поля");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         Apple apple = new Apple();
         ConsoleUtil.println("Изначальный цвет яблока: " + apple.getColor());
         try {

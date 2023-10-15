@@ -1,7 +1,7 @@
 package lesson16;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,14 +14,14 @@ Stream'ов:
 - Удалить дубликаты
 - Оставить только четные элементы
 - Вывести сумму оставшихся элементов в стриме*/
-public class L16Task1 extends Runnable {
+public class L16Task1 extends TaskRunnable {
 
     public L16Task1() {
         super("Удаление дубликатов, нечетных элементов и вывод суммы листа Integer");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         List<Integer> integerList = new ArrayList<>(Arrays.asList(1, 2, 2, 3, 3, 4, 5, 6, 7, 8, 8));
 
         ConsoleUtil.println("Изначальный список чисел:\n" + Arrays.toString(integerList.toArray()));

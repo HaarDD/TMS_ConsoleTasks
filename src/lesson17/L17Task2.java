@@ -2,7 +2,7 @@ package lesson17;
 
 import base.ConsoleUtil;
 import base.Pair;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,7 +23,7 @@ xxxx-xxxx-xx, где x - это любая цифра; номер телефон
 email: teachmeskills@gmail.com
 document number: 1423-1512-51
 и т.д*/
-public class L17Task2 extends Runnable {
+public class L17Task2 extends TaskRunnable {
 
     public static final String REGEX_GROUP_DOCUMENT_NUMBER = "docnum";
     public static final String REGEX_GROUP_PHONE_NUMBER = "phone";
@@ -47,7 +47,7 @@ public class L17Task2 extends Runnable {
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String regexTestCase1 = "Привет! Мой номер документа: 1245-1243-52, " +
                 "номер: +(33)3656994, почта: maxgalitskiy@gmail.com";
         String regexTestCase2 = "Привет! У меня нет номера документа. " +

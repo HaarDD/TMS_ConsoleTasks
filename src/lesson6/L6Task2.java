@@ -1,6 +1,6 @@
 package lesson6;
 
-import base.Runnable;
+import base.TaskRunnable;
 
 /*Задача *:
 Создать класс, описывающий банкомат. Набор купюр, находящихся в банкомате, должен
@@ -10,14 +10,14 @@ import base.Runnable;
 операции. При снятии денег, функция должна распечатывать каким количеством купюр
 какого номинала выдаётся сумма. Создать конструктор с тремя параметрами -
 количеством купюр каждого номинала.*/
-public class L6Task2 extends Runnable {
+public class L6Task2 extends TaskRunnable {
 
     public L6Task2() {
         super("Банкомат (2 метода выдачи денег)");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         ATM atm = new ATM(new Banknote(1000, 1), new Banknote(800, 1), new Banknote(500, 1), new Banknote(100, 3));
         atm.runATM();
     }

@@ -21,7 +21,7 @@ public class TasksSwitcher {
     }
 
     public void runMenu(MenuOption[] options) {
-        boolean isTasks = options instanceof Runnable[];
+        boolean isTasks = options instanceof TaskRunnable[];
         printMenuList(options);
         int selectedNumber = (int) ConsoleUtil.getNumberInRange("Введите пункт меню: ", 0, Double.MAX_VALUE);
 
@@ -35,7 +35,7 @@ public class TasksSwitcher {
 
         if (isTasks) {
             if (optionWasFound) {
-                ((Runnable) findOption(options, selectedNumber)).run();
+                ((TaskRunnable) findOption(options, selectedNumber)).runTask();
             } else {
                 printWrongMenuOptionMessage();
             }

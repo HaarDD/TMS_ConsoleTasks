@@ -1,7 +1,7 @@
 package lesson14_extended.university;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson14_extended.university.associations.Group;
 import lesson14_extended.university.persons.Employee;
 import lesson14_extended.university.persons.Person;
@@ -15,7 +15,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
-public class University extends Runnable {
+public class University extends TaskRunnable {
 
     private final HashSet<Student> studentHashSet;
 
@@ -155,7 +155,7 @@ public class University extends Runnable {
 
 
     @Override
-    public void run() {
+    public void runTask() {
         final int ADD_STUDENT = 1;
         final int ADD_EMPLOYEE = 2;
         final int ADD_STUDENT_TO_DORMITORY = 3;

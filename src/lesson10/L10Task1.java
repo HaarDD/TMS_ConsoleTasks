@@ -1,7 +1,7 @@
 package lesson10;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 
 /*Основное задание
@@ -28,14 +28,14 @@ yyy/yyy/y/y в нижнем регистре.
 которые на вход (входным параметром) будут принимать вводимую на вход
 программы строку.
 Дополнительное задание*/
-public class L10Task1 extends Runnable {
+public class L10Task1 extends TaskRunnable {
 
     public L10Task1() {
         super("Проверка номера документа формата xxxx-yyy-xxxx-yyy-xyxy и др.");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String documentNumber = ConsoleUtil.getString("""
                 Введите номер документа формата:\s
                 "xxxx-yyy-xxxx-yyy-xyxy", где x - число, y - буква

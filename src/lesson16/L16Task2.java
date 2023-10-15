@@ -1,7 +1,7 @@
 package lesson16;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,14 +12,14 @@ import java.util.stream.Collectors;
 этого набора только те данные, id которых попадает в числовой диапазон 1/2/5/8/9/13.
 Среди отобранных значений отобрать только те, которые имеют нечетное количество
 букв в имени. После чего вернуть список List имен, записанных буквами задом наперед.*/
-public class L16Task2 extends Runnable {
+public class L16Task2 extends TaskRunnable {
 
     public L16Task2() {
         super("Фильтрация HashMap");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         List<Integer> reservedIds = new ArrayList<>(Arrays.asList(1, 2, 5, 8, 9, 13));
         HashMap<Integer, String> hashMapIdName = new HashMap<>();
 

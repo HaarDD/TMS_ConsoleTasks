@@ -1,6 +1,6 @@
 package lesson9;
 
-import base.Runnable;
+import base.TaskRunnable;
 import lesson9.task1.Animal;
 import lesson9.task1.Dog;
 import lesson9.task1.Rabbit;
@@ -15,14 +15,14 @@ import lesson9.task1.Tiger;
 Например, если мы создадим объект класса Rabbit, вызовем метод eat() и передадим
 туда “Grass” он должен написать в консоли, что любит есть травку. Если передадим “Meat”
 или другую строку, то он будет недоволен*/
-public class L9Task1 extends Runnable {
+public class L9Task1 extends TaskRunnable {
 
     public L9Task1() {
         super("Иерархия классов Animal, Dog, Tiger, Rabbit");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         Dog dog = new Dog("Мухтар");
         Rabbit rabbit = new Rabbit("Роберт");
         Tiger tiger = new Tiger("Диего");

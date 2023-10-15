@@ -1,7 +1,7 @@
 package lesson18;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson18.task2.FileTools;
 import lesson18.task2.XMLParserDOM;
 import lesson18.task2.XMLParserSAX;
@@ -13,7 +13,7 @@ import java.util.List;
 Дополнительно реализовать следующий функционал: если с консоли введено значение 1
 - распарсить документ с помощью SAX, если с консоли введено значение 2 - распарсить
 документ с помощью DOM.*/
-public class L18Task2 extends Runnable {
+public class L18Task2 extends TaskRunnable {
 
     private static final int DOM_METHOD = 1;
     private static final int SAX_METHOD = 2;
@@ -23,7 +23,7 @@ public class L18Task2 extends Runnable {
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String xmlFilePath = "src/lesson18/xml/task1.xml";
         List<String> tagList = Arrays.asList("firstName", "lastName", "title", "line");
 

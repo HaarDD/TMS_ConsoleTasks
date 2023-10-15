@@ -1,7 +1,7 @@
 package lesson10;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.HashSet;
 
@@ -11,14 +11,14 @@ import java.util.HashSet;
 может содержать буквы и цифры. Если таких слов несколько, найти первое
 из них. Например, в строке "fffff ab f 1234 jkjk" найденное слово должно
 быть "fffff".*/
-public class L10Task3 extends Runnable {
+public class L10Task3 extends TaskRunnable {
 
     public L10Task3() {
         super("Нахождение слова, число различных символов которого минимально");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         String text = "fffff ab f 1234 jkjk";
         String[] words = text.split(" ");
         ConsoleUtil.println(findMinUniqueCharsWord(words));

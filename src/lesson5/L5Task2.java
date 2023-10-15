@@ -1,7 +1,7 @@
 package lesson5;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 /*Задача 2:
 Создать программу для раскраски шахматной доски с помощью цикла. Создать
@@ -16,7 +16,7 @@ W B W B W B W B
 B W B W B W B W
 W B W B W B W B
 B W B W B W B W*/
-public class L5Task2 extends Runnable {
+public class L5Task2 extends TaskRunnable {
 
     public L5Task2() {
         super("Шахматная доска");
@@ -24,7 +24,7 @@ public class L5Task2 extends Runnable {
 
 
     @Override
-    public void run() {
+    public void runTask() {
         String[][] board = new String[8][8];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {

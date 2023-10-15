@@ -1,7 +1,7 @@
 package lesson13;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson13.task4star.ArrayListCustom;
 
 
@@ -20,14 +20,14 @@ import lesson13.task4star.ArrayListCustom;
 по умолчанию. Предусмотреть конструктор с задаваемым размером внутреннего
 массива. Предусмотреть возможность автоматического расширения коллекции при
 добавлении элемента в том случае, когда коллекция уже заполнена.*/
-public class L13Task4 extends Runnable {
+public class L13Task4 extends TaskRunnable {
 
     public L13Task4() {
         super("Кастомный ArrayList");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         ArrayListCustom<String> stringArrayListCustom = new ArrayListCustom<>();
 
         stringArrayListCustom.add("Первый");

@@ -1,21 +1,21 @@
 package lesson14_extended;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BracesTaskMethodDeque extends Runnable {
+public class BracesTaskMethodDeque extends TaskRunnable {
 
     public BracesTaskMethodDeque() {
         super("Правильность вложенности скобок разных видов в строку с Deque");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         Map<Character, Character> braces = new HashMap<>();
         braces.put('(', ')');
         braces.put('<', '>');

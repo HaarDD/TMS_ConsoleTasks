@@ -2,7 +2,6 @@ package base;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.DoubleStream;
 
 public class ConsoleUtil {
     //константы для определения типов ввода массива
@@ -17,7 +16,7 @@ public class ConsoleUtil {
 
     public static final int MULTI_ARRAY_TYPE_USUAL = 1;
 
-    //Функции получаения чисел из консоли с различными параметрами
+    //Функции получения чисел из консоли с различными параметрами
     public static double getNumber(String comment) {
         return getNumber(comment, false, -Double.MAX_VALUE, Double.MAX_VALUE);
     }
@@ -121,27 +120,27 @@ public class ConsoleUtil {
     }
 
     //Функции получения массива из консоли способом на выбор с различными параметрами
-    public static double[] getDoubleArrayMenu() {
-        return getDoubleArray(DEFAULT_VALUE, DEFAULT_VALUE, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE));
+    public static Double[] getDoubleArrayMenu() {
+        return getDoubleArray(DEFAULT_VALUE, DEFAULT_VALUE, new Pair<>(-Double.MAX_VALUE, Double.MAX_VALUE));
     }
 
-    public static double[] getDoubleArrayMenu(double from, double to) {
-        return getDoubleArray(DEFAULT_VALUE, DEFAULT_VALUE, new Pair(from, to));
+    public static Double[] getDoubleArrayMenu(double from, double to) {
+        return getDoubleArray(DEFAULT_VALUE, DEFAULT_VALUE, new Pair<>(from, to));
     }
 
-    public static double[] getDoubleArrayMenu(int defaultInputMethod, double from, double to) {
-        return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair(from, to));
+    public static Double[] getDoubleArrayMenu(int defaultInputMethod, double from, double to) {
+        return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair<>(from, to));
     }
 
-    public static double[] getDoubleArrayMenu(int defaultInputMethod) {
-        return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE));
+    public static Double[] getDoubleArrayMenu(int defaultInputMethod) {
+        return getDoubleArray(DEFAULT_VALUE, defaultInputMethod, new Pair<>(-Double.MAX_VALUE, Double.MAX_VALUE));
     }
 
-    private static double[] getDoubleArray(int defaultLength, int defaultInputMethod, Pair defaultRange) {
-        double from = (double) defaultRange.getFirst();
-        double to = (double) defaultRange.getSecond();
+    private static Double[] getDoubleArray(int defaultLength, int defaultInputMethod, Pair<Double, Double> defaultRange) {
+        double from = defaultRange.getFirst();
+        double to = defaultRange.getSecond();
 
-        Pair randomExtremeRange = new Pair(from == -Double.MAX_VALUE ? 1 : from, to == Double.MAX_VALUE ? 100 : to);
+        Pair<Double, Double> randomExtremeRange = new Pair<>(from == -Double.MAX_VALUE ? 1 : from, to == Double.MAX_VALUE ? 100 : to);
 
         int length = defaultLength == DEFAULT_VALUE ? (int) ConsoleUtil.getNumberInRange("Введите размер массива: ", 2, 100) : defaultLength;
 
@@ -155,11 +154,11 @@ public class ConsoleUtil {
                 return enterDoubleArray(length, from, to, 2);
             }
             case INPUT_ARR_RANDOM_MANUAL -> {//ввод контролируемым рандомом
-                Pair randomRange = getTrueRange(from, to);//ввод диапазона
+                Pair<Double, Double> randomRange = getTrueRange(from, to);//ввод диапазона
                 return generateRandomDoubleArray(length, randomRange, (int) getNumberInRange("Знаки после запятой: ", 0));
             }
             default -> {
-                return new double[length];
+                return new Double[length];
             }
         }
     }
@@ -167,7 +166,7 @@ public class ConsoleUtil {
     //Основная функция получения массива способом на выбор. Параметр arrayInputType задает метод заполнения
     //Параметры from и to позволяют указать диапазон (значения -/+Double.MAX_VALUE считаются дефолтными)
 
-    private static int getArrayInputMethod(Pair randomExtremeRange) {
+    private static int getArrayInputMethod(Pair<Double, Double> randomExtremeRange) {
         return (int) getNumberInRange("Заполнение массива\n" + INPUT_ARR_RANDOM + " - случайные числа (от "
                 + randomExtremeRange.getFirst() + " до " + randomExtremeRange.getSecond() + "),\n" + INPUT_ARR_MANUAL + " - ручной набор,"
                 + "\n" + INPUT_ARR_RANDOM_MANUAL + " - случайные числа в диапазоне\nВыберите: ", 1, 3);
@@ -175,14 +174,14 @@ public class ConsoleUtil {
 
     //Функции получения массива из консоли способом на выбор с различными параметрами
     public static Object[] getMultiArray() {
-        return getMultiArrayBase(DEFAULT_VALUE, DEFAULT_VALUE, new Pair(-Double.MAX_VALUE, Double.MAX_VALUE), (int) ConsoleUtil.getNumberInRange("Введите уровень вложенности: ", 2));
+        return getMultiArrayBase(DEFAULT_VALUE, DEFAULT_VALUE, new Pair<>(-Double.MAX_VALUE, Double.MAX_VALUE), (int) ConsoleUtil.getNumberInRange("Введите уровень вложенности: ", 2));
     }
 
-    public static Object[] getMultiArrayWithParameters(int defaultLength, int defaultInputMethod, Pair defaultRange, int nesting) {
+    public static Object[] getMultiArrayWithParameters(int defaultLength, int defaultInputMethod, Pair<Double, Double> defaultRange, int nesting) {
         return getMultiArrayBase(defaultLength, defaultInputMethod, defaultRange, nesting);
     }
 
-    private static Object[] getMultiArrayBase(int defaultUsualMultiArrayLength, int defaultInputMethod, Pair defaultRange, int nesting) {
+    private static Object[] getMultiArrayBase(int defaultUsualMultiArrayLength, int defaultInputMethod, Pair<Double, Double> defaultRange, int nesting) {
         int length = defaultUsualMultiArrayLength == DEFAULT_VALUE ? (int) ConsoleUtil.getNumberInRange("Введите размер массива уровня " + nesting + ": ", 2, 100) : defaultUsualMultiArrayLength;
 
         int trueInputMethod = defaultInputMethod;
@@ -218,17 +217,13 @@ public class ConsoleUtil {
                 + MULTI_ARRAY_TYPE_JAGGED + " - зубчатый): ", MULTI_ARRAY_TYPE_USUAL, MULTI_ARRAY_TYPE_JAGGED);
     }
 
-    private static double[] arrayToDouble(Object[] array) {
-        return Arrays.stream(array).mapToDouble(value -> (Double) value).toArray();
-    }
-
-    public static Object[] convertDoubleToObjectArray(double[] doubleArray) {
-        return DoubleStream.of(doubleArray).boxed().toArray();
+    public static Object[] convertDoubleToObjectArray(Double[] doubleArray) {
+        return Arrays.stream(doubleArray).toArray(Object[]::new);
     }
 
     //Создает и заполняет массив из консоли для каждого числа
-    public static double[] enterDoubleArray(int length, double from, double to, int roundPlaces) {
-        double[] array = new double[length];
+    public static Double[] enterDoubleArray(int length, double from, double to, int roundPlaces) {
+        Double[] array = new Double[length];
         for (int i = 0; i < length; i++) {
             array[i] = DataUtil.unsafeRoundDouble(getNumberInRange("Введите число в диапазоне " + ((from == -Double.MAX_VALUE) ? "" : "от " + from)
                     + ((to == Double.MAX_VALUE) ? "" : " до " + to) + ": ", from, to), roundPlaces);
@@ -237,8 +232,8 @@ public class ConsoleUtil {
     }
 
     //Создает и заполняет массив рандомом по заданному диапазону
-    public static double[] generateRandomDoubleArray(int length, Pair range, int roundPlaces) {
-        double[] arrDouble = new double[length];
+    public static Double[] generateRandomDoubleArray(int length, Pair<Double, Double> range, int roundPlaces) {
+        Double[] arrDouble = new Double[length];
         for (int i = 0; i < arrDouble.length; i++) {
             arrDouble[i] = DataUtil.getRandomDoubleRounded(range, roundPlaces);
         }
@@ -246,27 +241,26 @@ public class ConsoleUtil {
     }
 
     //получение диапазона из консоли
-    public static Pair getTrueRange() {
+    public static Pair<Double, Double> getTrueRange() {
         return getTrueRangeBase(-Double.MAX_VALUE, Double.MAX_VALUE);
     }
 
     //получение диапазона из консоли с дополнительными границами
-    public static Pair getTrueRange(double from, double to) {
+    public static Pair<Double, Double> getTrueRange(double from, double to) {
         return getTrueRangeBase(from, to);
     }
 
     //основа получения диапазона из консоли
-    private static Pair getTrueRangeBase(double fromLimit, double toLimit) {
-        Pair range = new Pair(getNumber("От: "), getNumber("До"));
-        if ((double) range.getFirst() >= (double) range.getSecond() || (double) range.getFirst() < fromLimit || (double) range.getSecond() > toLimit) {
+    private static Pair<Double, Double> getTrueRangeBase(double fromLimit, double toLimit) {
+        Pair<Double, Double> range = new Pair<>(getNumber("От: "), getNumber("До"));
+        if (range.getFirst() >= range.getSecond() || range.getFirst() < fromLimit || range.getSecond() > toLimit) {
             println("Введенный диапазон неправильный! Попробуйте ещё раз.");
             return getTrueRange();
         } else return range;
     }
 
-    public static interface StringValidator {
+    private interface StringValidator {
         boolean validate(String inputString);
-
     }
 
 

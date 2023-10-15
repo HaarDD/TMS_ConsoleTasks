@@ -1,7 +1,7 @@
 package lesson13;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,14 +15,14 @@ import java.util.regex.Pattern;
 Пользователь вводит набор чисел в виде одной строки с клавиатуры. Например: "1, 2, 3,
 4, 4, 5". Избавиться от повторяющихся элементов в строке. Вывести результат на экран.
 При решении использовать коллекции.*/
-public class L13Task1 extends Runnable {
+public class L13Task1 extends TaskRunnable {
 
     public L13Task1() {
         super("Удаление дубликатов введенных чисел с консоли с помощью коллекций");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         List<Integer> valuesList = new ArrayList<>();
 
         while (valuesList.size() == 0) {

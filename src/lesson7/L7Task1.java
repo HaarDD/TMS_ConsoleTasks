@@ -1,7 +1,7 @@
 package lesson7;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson7.clinic.Clinic;
 import lesson7.clinic.persons.Patient;
 import lesson7.clinic.persons.doctors.Dantist;
@@ -20,14 +20,14 @@ import lesson7.clinic.persons.doctors.Therapist;
 Если план лечения имеет любой другой код – назначить терапевта и выполнить метод
 лечить.*/
 
-public class L7Task1 extends Runnable {
+public class L7Task1 extends TaskRunnable {
 
     public L7Task1() {
         super("Программа имитации работы клиники");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
 
         Clinic clinic = new Clinic("Клиника №1", "Пушкина, 1");
 

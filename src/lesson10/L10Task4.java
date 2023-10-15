@@ -1,7 +1,7 @@
 package lesson10;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 
 /*4. Дана строка произвольной длины с произвольными словами.
@@ -11,14 +11,14 @@ import base.Runnable;
 Предусмотреть предупреждающие сообщения на случаи ошибочных
 ситуаций: например, в строке 5 слов, а на вход программе передали число
 500 и т. п. ситуации.*/
-public class L10Task4 extends Runnable {
+public class L10Task4 extends TaskRunnable {
 
     public L10Task4() {
         super("Проверка выбранного слова на палиндром");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         StringBuilder textSB;
 
         while (true) {

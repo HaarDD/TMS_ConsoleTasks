@@ -1,7 +1,7 @@
 package lesson4;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.Arrays;
 
@@ -15,14 +15,14 @@ Input: [1,4,0,5,6,3]
 Output: [1,4,0,5,6,4]
 Input: [9,9,9]
 Output: [1,0,0,0]*/
-public class L4Task5 extends Runnable {
+public class L4Task5 extends TaskRunnable {
 
     public L4Task5() {
         super("Инкремент числа в виде массива");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         final int STRING_METHOD = 1;
         final int LOG_METHOD = 2;
 

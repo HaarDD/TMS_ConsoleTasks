@@ -1,7 +1,7 @@
 package lesson15;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,14 +11,14 @@ import java.util.List;
 /*Задача 2:
 Используя Predicate среди массива чисел вывести только те, которые являются
 положительными.*/
-public class L15Task2 extends Runnable {
+public class L15Task2 extends TaskRunnable {
 
     public L15Task2() {
         super("Фильтрация массива на положительные числа с помощью Predicate");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         List<Integer> valuesList = new ArrayList<>();
         int listCapacity = (int) ConsoleUtil.getNaturalNumber("Введите размер массива: ");
         for (int i = 0; i < listCapacity; i++) {

@@ -1,7 +1,7 @@
 package lesson13;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 import lesson13.task3.Student;
 
 import java.util.ArrayList;
@@ -17,14 +17,14 @@ import java.util.List;
 printStudents(List<Student> students, int course), который получает список студентов и
 номер курса. А также печатает на консоль имена тех студентов из списка, которые
 обучаются на данном курсе.*/
-public class L13Task3 extends Runnable {
+public class L13Task3 extends TaskRunnable {
 
     public L13Task3() {
         super("Класс Student");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         List<Student> studentsList = new ArrayList<>();
 
         studentsList.add(new Student("Иванов", "1", 1, 2, 3, 6, 7, 8, 9));

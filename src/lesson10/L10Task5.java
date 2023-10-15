@@ -1,20 +1,20 @@
 package lesson10;
 
 import base.ConsoleUtil;
-import base.Runnable;
+import base.TaskRunnable;
 
 /*5. Дана произвольная строка.
 Вывести на консоль новую строку, которой задублирована каждая буква из
 начальной строки.
 Например, "Hello" -> "HHeelllloo".*/
-public class L10Task5 extends Runnable {
+public class L10Task5 extends TaskRunnable {
 
     public L10Task5() {
         super("Дублирование букв в строке");
     }
 
     @Override
-    public void run() {
+    public void runTask() {
         StringBuilder textSB = new StringBuilder(ConsoleUtil.getString("Введите любой текст: "));
         duplicateLetters(textSB);
         ConsoleUtil.println("Строка с продублированными буквами: " + textSB);
