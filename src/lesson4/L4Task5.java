@@ -27,7 +27,7 @@ public class L4Task5 extends TaskRunnable {
         final int LOG_METHOD = 2;
 
         ConsoleUtil.println("Примечание: все 0 в начале массива будут удалены");
-        int[] array = Arrays.stream(ConsoleUtil.getDoubleArrayMenu(ConsoleUtil.INPUT_ARR_MANUAL, 0, 9)).mapToInt(value -> (int) value).toArray();
+        int[] array = Arrays.stream(ConsoleUtil.getDoubleArrayMenu(ConsoleUtil.INPUT_ARR_MANUAL, 0, 9)).mapToInt(Double::intValue).toArray();
 
         int zerosFromStart = 0;
         for (int i : array) {

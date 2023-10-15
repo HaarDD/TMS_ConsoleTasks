@@ -259,7 +259,7 @@ public class ConsoleUtil {
         } else return range;
     }
 
-    private interface StringValidator {
+    public interface StringValidator {
         boolean validate(String inputString);
     }
 
