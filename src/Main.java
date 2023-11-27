@@ -25,6 +25,7 @@ import lesson19.L19Task1;
 import lesson19.L19Task2;
 import lesson19.L19Task3;
 import lesson2.*;
+import lesson20.L20Task1;
 import lesson3.L3Task1;
 import lesson4.*;
 import lesson5.*;
@@ -80,6 +81,8 @@ public class Main {
                 new TaskRunnable[]{new L18Task1(), new L18Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("Определение потоков Java",
                 new TaskRunnable[]{new L19Task1(), new L19Task2(), new L19Task3()}));
+        tasksSwitcher.addLesson(new RunnableContainer("JDBC",
+                new TaskRunnable[]{new L20Task1()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
