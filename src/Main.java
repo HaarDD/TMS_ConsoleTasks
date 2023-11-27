@@ -21,6 +21,9 @@ import lesson17.L17Task1;
 import lesson17.L17Task2;
 import lesson18.L18Task1;
 import lesson18.L18Task2;
+import lesson19.L19Task1;
+import lesson19.L19Task2;
+import lesson19.L19Task3;
 import lesson2.*;
 import lesson3.L3Task1;
 import lesson4.*;
@@ -75,6 +78,8 @@ public class Main {
                 new TaskRunnable[]{new L17PracticesAll(), new L17Task1(), new L17Task2()}));
         tasksSwitcher.addLesson(new RunnableContainer("Работа с xml (dom,sax)",
                 new TaskRunnable[]{new L18Task1(), new L18Task2()}));
+        tasksSwitcher.addLesson(new RunnableContainer("Определение потоков Java",
+                new TaskRunnable[]{new L19Task1(), new L19Task2(), new L19Task3()}));
         tasksSwitcher.runTasksSwitcher();
     }
 
